@@ -7,7 +7,7 @@ public class TableauPlanTailleFixe extends Hashtable<String,ArrayList<Item>>{
 		super();
 	}
 	
-	public void ajouter(String clé, Item valeur) {
-		this.get(clé).add(valeur);
+	public void ajouter(String clÃ©, Item valeur) {
+		this.get(clÃ©).add(valeur);
 	}
 }

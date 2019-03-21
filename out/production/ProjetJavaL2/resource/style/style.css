@@ -1,0 +1,8 @@
+.button {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+#gridCraft{
+    -fx-background-color: white;
+}

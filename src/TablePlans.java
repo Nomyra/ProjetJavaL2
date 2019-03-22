@@ -12,7 +12,7 @@ public class TablePlans extends Hashtable<Integer,Item> {
 		}
 	}
 
-	public Item chercher(String forme, String[] materiaux) {
-		return this.get(forme.hashCode()*materiaux.hashCode());
+	public Item chercher(Plan plan) {
+		return this.get(plan.hashCode());
 	}
 }

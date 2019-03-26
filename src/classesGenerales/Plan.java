@@ -1,3 +1,4 @@
+package classesGenerales;
 import java.util.ArrayList;
 
 public class Plan{

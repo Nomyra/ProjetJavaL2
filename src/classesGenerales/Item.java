@@ -1,3 +1,4 @@
+package classesGenerales;
 public class Item {
 
 	public String nom;

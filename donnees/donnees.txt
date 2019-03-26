@@ -1,3 +1,25 @@
 Bois_de_chene
 Planches_de_chene; , , / , , / , ,Bois_de_chene;4
 stick; , , /Planches_de_chene, , /Planches_de_chene, , ;1
+Laine_blanche
+string; , , / , , / , ,Laine_blanche;9
+Canne_a_peche; , ,stick/,stick,string/stick,,string;1
+bow;Laine_blanche,stick,/Laine_blanche,,stick/Laine_blanche,stick,;1
+carrot
+carrot_on_a_stick;,,/,Canne_a_peche,/,,carrot;1
+iron_ingot;,,/,,/,,Bloc_de_fer;9
+Bloc_de_fer;iron_ingot,iron_ingot,iron_ingot/iron_ingot,iron_ingot,iron_ingot/iron_ingot,iron_ingot,iron_ingot;1
+iron_boots;,,/iron_ingot,,iron_ingot/iron_ingot,,iron_ingot;1
+iron_chestplate;iron_ingot,,iron_ingot/iron_ingot,iron_ingot,iron_ingot/iron_ingot,iron_ingot,iron_ingot;1
+iron_leggings;iron_ingot,iron_ingot,iron_ingot/iron_ingot,,iron_ingot/iron_ingot,,iron_ingot;1
+iron_helmet;,,/iron_ingot,iron_ingot,iron_ingot//iron_ingot,,iron_ingot;1
+iron_door;iron_ingot,iron_ingot,/iron_ingot,iron_ingot,/iron_ingot,iron_ingot,;3
+iron_axe;iron_ingot,iron_ingot,/iron_ingot,stick,/,stick,;1
+iron_hoe;iron_ingot,iron_ingot,/,stick,/,stick,;1
+iron_shovel;,iron_ingot,/,stick,/,stick,;1
+iron_pickaxe;iron_ingot,iron_ingot,iron_ingot/,stick,/,stick,;1
+iron_sword;,iron_ingot,/,iron_ingot,/,stick,;1
+bucket;,,/iron_ingot,,iron_ingot/,iron_ingot,;1
+cauldron;iron_ingot,,iron_ingot/iron_ingot,,iron_ingot/iron_ingot,iron_ingot,iron_ingot;1
+shears;,,/,iron_ingot,/iron_ingot,,/;1
+minecart;,,/,iron_ingot,/iron_ingot,iron_ingot,iron_ingot;1

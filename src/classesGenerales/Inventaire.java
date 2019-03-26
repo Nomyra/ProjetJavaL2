@@ -12,7 +12,15 @@ public class Inventaire extends HashMap<String,Integer>{
 		if (this.get(s) == null) {
 			this.put(s, 1);
 		} else {
-			this.put(s, this.get(s)+1);
+			this.replace(s, this.get(s)+1);
+		}
+	}
+	
+	public void retirer(String s) {
+		if (this.get(s) == 1) {
+			this.remove(s);
+		} else {
+			this.replace(s, this.get(s)-1);
 		}
 	}
 }

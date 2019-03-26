@@ -8,12 +8,14 @@ public class Modele {
 	public Plan planEnCours; //plan en cours sur la table de craft
 	public Inventaire inventaire; //inventaire des objets détenus par l'utilisateur (par nom et quantité)
 	public TableItems reserve; //liste de tous les items disponibles (fabricables et non fabricables) rangés par nom
+	public Item resultatCraft; //Item résultant du plan actuellement sur la table (null si le plan ne correspond à rien)
 
 	public Modele() {
 		this.chargerItem();
 		this.inventaire = new Inventaire(); //doit remplir plans et reserve
 		String[][] planVide = {{"","",""},{"","",""},{"","",""}};
 		this.planEnCours = new Plan(planVide);
+		this.resultatCraft = null;
 	}
 	
 	

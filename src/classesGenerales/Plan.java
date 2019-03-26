@@ -16,7 +16,7 @@ public class Plan{
 		int[] init = {0,0};
 		for (int i=0; i<this.plan.length; i++) {
 			for (int j=0; j<this.plan.length; j++) {
-				if (this.plan[i][j] != "") {
+				if (this.plan[i][j] != " ") {
 					if (premier) {
 						codeForme += "2";
 						init[0] = i;
@@ -30,5 +30,15 @@ public class Plan{
 			}
 		}
 		return codeForme.hashCode()*materiaux.hashCode();
+	}
+	
+	public String toString() {
+		String m = "";
+		for (int i=0; i<this.plan.length; i++) {
+			for (int j=0; j<this.plan[0].length; j++) {
+				m += "" + this.plan[i][j];
+			}
+		}
+		return m;
 	}
 }

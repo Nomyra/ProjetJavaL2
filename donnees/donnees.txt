@@ -1,0 +1,3 @@
+Bois_de_chene
+Planches_de_chene, [["","",""],["","",""],["","","Bois_de_chene"]], 4
+stick, [["","",""],["Planches_de_chene","",""],["Planches_de_chene","",""]], 1

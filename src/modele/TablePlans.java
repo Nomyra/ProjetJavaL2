@@ -1,7 +1,8 @@
-package classesGenerales;
+package modele;
+
 import java.util.Hashtable;
 
-public class TablePlans extends Hashtable<Integer,Item> {
+public class TablePlans extends Hashtable<Integer, Item> {
 
 	public TablePlans() {
 		super();
@@ -16,4 +17,6 @@ public class TablePlans extends Hashtable<Integer,Item> {
 	public Item chercher(Plan plan){
 		return this.get(plan.hashCode());
 	}
+
 }
+

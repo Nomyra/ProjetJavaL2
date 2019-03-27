@@ -1,4 +1,5 @@
 package modele;
+
 public class Item {
 
 	public String nom;
@@ -31,3 +32,4 @@ public class Item {
 		return this.nom;
 	}
 }
+

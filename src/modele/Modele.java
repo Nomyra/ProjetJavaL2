@@ -34,37 +34,23 @@ public class Modele {
 		String[] tab;
 		FileReader f = new FileReader("donnees/donnees.txt");
 		BufferedReader br = new BufferedReader(f);
+		Item it;
 		while ((m = br.readLine()) != null){
 			tab = m.split(";");
-			if (tab.length == 1) {
-				this.plans.ajouter(new Item(tab[0], ""));
-			} else {
+			if (tab.length != 1) {
 				String[] sousTab = tab[1].split("/");
 				String[][] pl = {sousTab[0].split(","),sousTab[1].split(","),sousTab[2].split(",")};
 				Plan p1 = new Plan(pl);
-				this.plans.ajouter(new Item(p1, tab[0], "t"));
+				it = new Item(p1, tab[0], "", Integer.parseInt(tab[tab.length-1]));
+				this.plans.ajouter(it);
+			} else {
+				it = new Item(tab[0], "");
 			}
+			this.reserve.ajouter(it);
 		}
 
 		f.close();
 		br.close();
-		
-		/*
-		FileReader f2 = new FileReader("/home/ndupasqu/Téléchargements/choix.txt");
-		BufferedReader br2 = new BufferedReader(f2);
-		
-		while ((m = br2.readLine()) != null){
-			tab = m.split(";");
-			this.situations.get(Integer.parseInt(tab[0])).ajouterChoix(new Choix(tab[2],tab[3],this.situations.get(Integer.parseInt(tab[1]))));
-		}
-		
-		f2.close();
-		br2.close();
-		
-		this.situationInitiale = this.situations.get(0);
-		
-		
-		*/
 	}
 	
 	// pour mettre planEnCours à jour quand il change

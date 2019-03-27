@@ -8,11 +8,11 @@ public class Inventaire extends HashMap<String,Integer>{
 		super();
 	}
 	
-	public void ajouter(String s) {
+	public void ajouter(String s, int quantite) {
 		if (this.get(s) == null) {
-			this.put(s, 1);
+			this.put(s, quantite);
 		} else {
-			this.replace(s, this.get(s)+1);
+			this.replace(s, this.get(s)+quantite);
 		}
 	}
 	

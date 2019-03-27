@@ -5,18 +5,22 @@ public class Item {
 	public String categorie;
 	public boolean fabricable;
 	public Plan plan;
+	public int nbFabrique;
 	
-	public Item(Plan pl, String n, String categ) {
+	public Item(Plan pl, String n, String categ, int nombre) {
 		this.nom = n;
 		this.fabricable = true;
 		this.categorie = categ;
 		this.plan = pl;
+		this.nbFabrique = nombre;
 	}
 	
 	public Item(String n, String categ) {
 		this.nom = n;
 		this.fabricable = false;
 		this.categorie = categ;
+		this.nbFabrique = 0;
+		this.plan = null;
 	}
 	
 	public int hashCode() {

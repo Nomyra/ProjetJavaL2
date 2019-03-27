@@ -1,4 +1,4 @@
-package classesGenerales;
+package modele;
 import java.util.Hashtable;
 
 public class TablePlans extends Hashtable<Integer,Item> {

@@ -23,3 +23,27 @@ bucket; , , /iron_ingot, ,iron_ingot/ ,iron_ingot, ;1
 cauldron;iron_ingot, ,iron_ingot/iron_ingot, ,iron_ingot/iron_ingot,iron_ingot,iron_ingot;1
 shears; , , / ,iron_ingot, /iron_ingot, , ;1
 minecart; , , / ,iron_ingot, /iron_ingot,iron_ingot,iron_ingot;1
+wooden_axe;Planches_de_chene,Planches_de_chene, /Planches_de_chene,stick, / ,stick, ;1
+wooden_hoe;Planches_de_chene,Planches_de_chene, / ,stick, / ,stick, ;1
+wooden_shovel; ,Planches_de_chene, / ,stick, / ,stick, ;1
+wooden_pickaxe;Planches_de_chene,Planches_de_chene,Planches_de_chene/ ,stick, / ,stick, ;1
+wooden_sword; ,Planches_de_chene, / ,Planches_de_chene, / ,stick, ;1
+sign;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene/ ,stick, ;3
+oak_boat; , , /Planches_de_chene,wooden_shovel,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1
+boat; , , /Planches_de_chene, ,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1
+dark_oak_door;Planches_de_chene,Planches_de_chene, /Planches_de_chene,Planches_de_chene, /Planches_de_chene,Planches_de_chene, ;3
+bed; , , /Laine_blanche,Laine_blanche,Laine_blanche/Planches_de_chene,Planches_de_chene,Planches_de_chene;1
+bowl; , , /Planches_de_chene, ,Planches_de_chene/ ,Planches_de_chene, ;1
+Bouclier;Planches_de_chene,iron_ingot,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene/ ,Planches_de_chene, ;1
+Tripwire_haak; ,iron_ingot, / ,stick, / ,Planches_de_chene, ;2
+Barriere_en_bois_de_chene; , , /Planches_de_chene,stick,Planches_de_chene/Planches_de_chene,stick,Planches_de_chene;3
+Bouton_en_bois_de_chene; , , / ,Planches_de_chene, / , , ;1
+Composteur;Barriere_en_bois_de_chene, ,Barriere_en_bois_de_chene/Barriere_en_bois_de_chene, ,Barriere_en_bois_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1
+Dalle_en_bois; , , / , , /Planches_de_chene,Planches_de_chene,Planches_de_chene;6
+Escaliers_en_bois_de_chene; , ,Planches_de_chene/ ,Planches_de_chene,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;4
+Metier_a_tisser; , , /string,string, /Planches_de_chene,Planches_de_chene, ;1
+Trappe_en_bois_de_chene; , , /Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;2
+Tonneau;Planches_de_chene,Trappe_en_bois_de_chene,Planches_de_chene/Planches_de_chene, ,Planches_de_chene/Planches_de_chene,Trappe_en_bois_de_chene,Planches_de_chene;1
+Portillon_en_bois_de_chene; , , /stick,Planches_de_chene,stick/stick,Planches_de_chene,stick;1
+Plaque_de_pression_en_bois_de_chene; , , / , , /Planches_de_chene,Planches_de_chene, ;1
+chest;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene, ,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1

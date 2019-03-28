@@ -68,3 +68,4 @@ leather_helmet; , , /leather,leather,leather/leather, ,leather;1
 leather_leggings;leather,leather,leather/leather, ,leather/leather, ,leather;1
 leather_chestplate;leather, ,leather/leather,leather,leather/leather,leather,leather;1
 item_frame;stick,stick,stick/stick,leather,stick/stick,stick,stick;1
+apple

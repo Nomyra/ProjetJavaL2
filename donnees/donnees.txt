@@ -1,8 +1,9 @@
 Bois_de_chene
 Planches_de_chene; , , / , , / , ,Bois_de_chene;4
 stick; , , /Planches_de_chene, , /Planches_de_chene, , ;1
-Laine_blanche
-string; , , / , , / , ,Laine_blanche;9
+Toile_araignee
+string; , , / ,Toile_araignee, / , , ;9
+Laine_blanche; , , /string,string, /string,string, ;1
 Canne_a_peche; , ,stick/ ,stick,string/stick, ,string;1
 bow;Laine_blanche,stick, /Laine_blanche, ,stick/Laine_blanche,stick, ;1
 carrot
@@ -47,3 +48,23 @@ Tonneau;Planches_de_chene,Trappe_en_bois_de_chene,Planches_de_chene/Planches_de_
 Portillon_en_bois_de_chene; , , /stick,Planches_de_chene,stick/stick,Planches_de_chene,stick;1
 Plaque_de_pression_en_bois_de_chene; , , / , , /Planches_de_chene,Planches_de_chene, ;1
 chest;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene, ,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1
+chest_minecart; , , / ,chest, / ,minecart, ;1
+Rails;iron_ingot, ,iron_ingot/iron_ingot,stick,iron_ingot/iron_ingot, ,iron_ingot;16
+Echelle;stick, ,stick/stick,stick,stick/stick, ,stick;3
+Barreaux_de_fer; , , /iron_ingot,iron_ingot,iron_ingot/iron_ingot,iron_ingot,iron_ingot;16
+Coffre_piege; , , / ,Tripwire_haak,chest/ , , ;1
+Banniere_blanche;Laine_blanche,Laine_blanche,Laine_blanche/Laine_blanche,Laine_blanche,Laine_blanche/ ,stick, ;1
+Tableau;stick,stick,stick/stick,Laine_blanche,stick/stick,stick,stick;1
+Trappe_en_fer; , , /iron_ingot,iron_ingot, /iron_ingot,iron_ingot, ;1
+hooper;iron_ingot, ,iron_ingot/iron_ingot,chest,iron_ingot/ ,iron_ingot, ;1
+Plaque_de_pression_ponderee_lourde; , , /iron_ingot,iron_ingot, / , , ;1
+hopper_minecart; , , / ,hopper, / ,minecart, ;1
+crossbow;stick,iron_ingot,stick/string,Tripwire_haak,string/ ,stick, ;1
+rabbit_hide
+leather; , , / ,rabbit_hide,rabbit_hide/ ,rabbit_hide,rabbit_hide;1
+leather_horse_armor;leather, ,leather/leather,leather,leather/leather, ,leather;1
+leather_boots; , , /leather, ,leather/leather, ,leather;1
+leather_helmet; , , /leather,leather,leather/leather, ,leather;1
+leather_leggings;leather,leather,leather/leather, ,leather/leather, ,leather;1
+leather_chestplate;leather, ,leather/leather,leather,leather/leather,leather,leather;1
+item_frame;stick,stick,stick/stick,leather,stick/stick,stick,stick;1

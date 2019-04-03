@@ -1,7 +1,5 @@
 package modele;
 
-import java.beans.XMLEncoder;
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -88,7 +86,7 @@ public class Modele {
 	public void changerPlanEnCours() {
 		
 	}
-	
+
 	// pour enregistrer l'état de l'appli (sur demande de l'user)
 	public void enregistrerEtat() {
 		try {

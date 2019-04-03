@@ -63,4 +63,8 @@ public class Modele {
 	public void changerPlanEnCours() {
 		
 	}
+
+	public ArrayList<String> getCategories() {
+		return categories;
+	}
 }

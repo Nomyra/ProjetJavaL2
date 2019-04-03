@@ -50,7 +50,9 @@
          <children>
             <TableView prefHeight="200.0" prefWidth="345.0">
               <columns>
-                <TableColumn fx:id="c1" prefWidth="341.0" text="C1" />
+                <TableColumn fx:id="c1"  text="C1" />
+                <TableColumn fx:id="c2"  text="C1" />
+                <TableColumn fx:id="c3"  text="C1" />
               </columns>
             </TableView>
          </children>

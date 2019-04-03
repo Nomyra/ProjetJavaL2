@@ -3,7 +3,9 @@ package modele;
 public class Item {
 
 	public String nom;
-	public String categorie;
+	public String categorie; //definir des cathégorie fixe
+
+
 	public boolean fabricable;
 	public Plan plan;
 	public int nbFabrique;
@@ -29,7 +31,48 @@ public class Item {
 	}
 	
 	public String toString() {
-		return this.nom;
+		return this.nom + this.categorie;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
+	public boolean isFabricable() {
+		return fabricable;
+	}
+
+	public void setFabricable(boolean fabricable) {
+		this.fabricable = fabricable;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	public int getNbFabrique() {
+		return nbFabrique;
+	}
+
+	public void setNbFabrique(int nbFabrique) {
+		this.nbFabrique = nbFabrique;
 	}
 }
 

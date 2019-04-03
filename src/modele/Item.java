@@ -1,6 +1,8 @@
 package modele;
 
-public class Item {
+import java.io.Serializable;
+
+public class Item implements Serializable{
 
 	public String nom;
 	public String categorie; //definir des catégories fixes

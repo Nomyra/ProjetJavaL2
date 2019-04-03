@@ -1,8 +1,9 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.Hashtable;
 
-public class TablePlans extends Hashtable<Integer, Item> {
+public class TablePlans extends Hashtable<Integer, Item> implements Serializable {
 
 	public TablePlans() {
 		super();
@@ -15,7 +16,11 @@ public class TablePlans extends Hashtable<Integer, Item> {
 	}
 
 	public Item chercher(Plan plan){
-		return this.get(plan.hashCode());
+		try {
+			return this.get(plan.hashCode());
+		} catch(NullPointerException e) {
+			return null;
+		}
 	}
 
 }

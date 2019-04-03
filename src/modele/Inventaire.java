@@ -1,8 +1,9 @@
 package modele;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Inventaire extends HashMap<String,Integer>{
+public class Inventaire extends HashMap<String,Integer> implements Serializable{
 
 	public Inventaire() {
 		super();

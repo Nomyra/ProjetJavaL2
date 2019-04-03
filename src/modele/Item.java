@@ -3,9 +3,7 @@ package modele;
 public class Item {
 
 	public String nom;
-	public String categorie; //definir des cathégorie fixe
-
-
+	public String categorie; //definir des catégories fixes
 	public boolean fabricable;
 	public Plan plan;
 	public int nbFabrique;

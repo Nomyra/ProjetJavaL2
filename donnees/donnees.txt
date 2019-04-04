@@ -105,3 +105,7 @@ stone_pickaxe;Pierres,Pierres,Pierres/ ,stick, / ,stick, ;1;OUTILS
 stone_sword; ,Pierres, / ,Pierres, / ,stick, ;1;ARMES
 Levier; , , / ,stick, / ,Pierres, ;1;REDSTONE
 Muret_de_pierres; , , /Pierres,Pierres,Pierres/Pierres,Pierres,Pierres;6;PIERRE
+Etabli; , , / ,Planches_de_chene,Planches_de_chene/ ,Planches_de_chene,Planches_de_chene;1;BOIS
+Table_de_forge; , , /Etabli,Pierres, / , , ;1;PIERRE
+Fumoir; ,Planches_de_chene, /Planches_de_chene,Fourneau,Planches_de_chene/ ,Planches_de_chene, ;1;PIERRE
+quartz;MATIERES_PREMIERES

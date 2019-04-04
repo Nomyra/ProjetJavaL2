@@ -109,3 +109,13 @@ Etabli; , , / ,Planches_de_chene,Planches_de_chene/ ,Planches_de_chene,Planches_
 Table_de_forge; , , /Etabli,Pierres, / , , ;1;PIERRE
 Fumoir; ,Planches_de_chene, /Planches_de_chene,Fourneau,Planches_de_chene/ ,Planches_de_chene, ;1;PIERRE
 quartz;MATIERES_PREMIERES
+Bloc_de_quartz; , , /quartz,quartz, /quartz,quartz, ;1;MATIERES_PREMIERES
+Escaliers_en _quartz; , ,Bloc_de_quartz/ ,Bloc_de_quartz,Bloc_de_quartz/Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;4;PIERRE
+Dalle_en_quartz; , , / , , /Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;6;PIERRE
+Observateur;Pierres,Pierres,Pierres/redstone,redstone,quartz/Pierres,Pierres,Pierres;1;REDSTONE
+Diorite; , , /Pierres,quartz, /quartz,Pierres, ;2;PIERRE
+Andesite; , , /Pierres,Diorite, / , , ;2;PIERRE
+Roche;MATIERES_PREMIERES
+Bouton_en_pierre; , , / ,Roche, / , , ;1;PIERRE
+comparator; ,Torche_de_redstone, /Torche_de_redstone,quartz,Torche_de_redstone/Roche,Roche,Roche;1;REDSTONE
+Escalier_de_roche; , ,Roche/ ,Roche,Roche/Roche,Roche,Roche;4;PIERRE

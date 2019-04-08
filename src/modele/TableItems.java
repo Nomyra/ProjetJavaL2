@@ -9,8 +9,6 @@ public class TableItems extends Hashtable<String,Item>{
 	}
 	
 	public void ajouter(Item i) {
-		this.put(i.nom, i);
+		this.put(i.categorie+i.nom, i);
 	}
-
-
 }

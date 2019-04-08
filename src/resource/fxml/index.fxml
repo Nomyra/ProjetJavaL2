@@ -3,24 +3,24 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="633.0" prefWidth="600.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
+<AnchorPane prefHeight="784.0" prefWidth="849.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
     <children>
 
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <left>
-            <GridPane fx:id="gridCraft" gridLinesVisible="true" prefHeight="250.0" prefWidth="250.0"  BorderPane.alignment="CENTER">
+            <GridPane fx:id="gridCraft" gridLinesVisible="true" prefHeight="250.0" prefWidth="250.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints fx:id="line1" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints fx:id="line2" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -45,22 +45,9 @@
          </center>
       </BorderPane>
 
-
-      <Pane layoutX="119.0" layoutY="268.0" prefHeight="200.0" prefWidth="431.0">
-         <children>
-            <TableView prefHeight="200.0" prefWidth="345.0">
-              <columns>
-                <TableColumn fx:id="c1"  text="C1" />
-                <TableColumn fx:id="c2"  text="C1" />
-                <TableColumn fx:id="c3"  text="C1" />
-              </columns>
-            </TableView>
-         </children>
-      </Pane>
-
         <!-- HORIZONTAL BOX-->
 
-        <HBox id="HBox" alignment="CENTER" layoutX="10.0" layoutY="554.0" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="554.0">
+        <HBox id="HBox" alignment="CENTER" layoutX="10.0" layoutY="226.0" spacing="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="226.0">
             <children>
                 <Label text="Search Text:" />
                 <TextField fx:id="searchField" prefWidth="-1.0" HBox.hgrow="ALWAYS" />
@@ -68,5 +55,19 @@
                 <Label fx:id="searchLabel" />
             </children>
         </HBox>
+
+
+      <VBox id="VBox" alignment="CENTER" layoutY="268.0" prefHeight="251.0" prefWidth="842.0">
+         <children>
+            <TableView fx:id="reserve" prefHeight="263.0" prefWidth="840.0">
+              <columns></columns>
+            </TableView>
+            <TitledPane fx:id="inventaire" alignment="CENTER" animated="false" contentDisplay="CENTER" text="Inventaire" textAlignment="CENTER">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </TitledPane>
+         </children>
+      </VBox>
     </children>
 </AnchorPane>

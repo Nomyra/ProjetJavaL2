@@ -1,45 +1,48 @@
 package controler;
 
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
-import javafx.scene.layout.VBox;
+import modele.Modele;
+//import java.util.regex.*;
 
-import java.util.stream.Collectors;
 
 public class MainController {
-
-    public static final int PAGE_ITEMS_COUNT = 10;
-
+   // private static Pattern pattern;
+    //private static Matcher matcher;
     @FXML
     private TextField searchField;
     @FXML
     private Button searchButton;
     @FXML
     private Label searchLabel;
+    @FXML
+    private TableView<Modele> reserve;
 
-
-    public MainController() {
-
-    }
+    public MainController(){}
 
     @FXML
     private void initialize() {
 
-       // new TableItemsControler();
-
         searchButton.setText("Search");
-
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             searchLabel.setText(newValue);
         });
+        Modele m = new Modele();
+        reserve(m);
+    }
 
+    public void reserve(Modele modele){
+        for (int i=0; i<modele.categories.size(); i++){
+            TableColumn col = new TableColumn(modele.categories.get(i));
+            reserve.getColumns().addAll(col);
 
+          /*  Pattern p = Pattern.compile("(^"+modele.categories.get(i)+")");
+            Matcher m = p.matcher(modele.reserve.keySet().toString());
+            Boolean b = m.lookingAt();
+            System.out.println(p);
+            System.out.println(m);
+            System.out.println(b);*/
+        }
     }
 
 

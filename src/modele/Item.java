@@ -29,7 +29,7 @@ public class Item {
 	}
 	
 	public String toString() {
-		return this.nom + this.categorie;
+		return this.nom +" "+ this.categorie;
 	}
 
 

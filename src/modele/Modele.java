@@ -25,8 +25,7 @@ public class Modele {
 		this.planEnCours = new Plan(planVide);
 		this.resultatCraft = null;
 	}
-	
-	
+
 	//pour charger tous les items au lancement de l'application
 	//nécessite de savoir où/comment sont stockées/codées les infos
 	public void chargerItem() throws IOException {
@@ -64,7 +63,4 @@ public class Modele {
 		
 	}
 
-	public ArrayList<String> getCategories() {
-		return categories;
-	}
 }

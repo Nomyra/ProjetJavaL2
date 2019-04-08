@@ -1,8 +1,13 @@
 package modele;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Modele {
@@ -14,18 +19,37 @@ public class Modele {
 	public TableItems reserve; //liste de tous les items disponibles (fabricables et non fabricables) rangés par nom
 	public Item resultatCraft; //Item résultant du plan actuellement sur la table (null si le plan ne correspond à rien)
 
+	File fichierInv = new File("inventaire.dat");
+	File fichierTab = new File("table.dat");
+	
 	public Modele() {
 		try {
 			this.chargerItem();
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		this.inventaire = new Inventaire(); //doit remplir plans et reserve
-		String[][] planVide = {{"","",""},{"","",""},{"","",""}};
-		this.planEnCours = new Plan(planVide);
-		this.resultatCraft = null;
+		
+		try {
+			FileInputStream fis = new FileInputStream(this.fichierInv);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			this.inventaire = (Inventaire)ois.readObject();
+			
+			fis = new FileInputStream(this.fichierTab);
+			ois = new ObjectInputStream(fis);
+			this.planEnCours = (Plan)ois.readObject();
+			
+			ois.close();
+			fis.close();
+		} catch(IOException | ClassNotFoundException e) {
+			this.inventaire = new Inventaire();
+			String[][] planVide = {{"","",""},{"","",""},{"","",""}};
+			this.planEnCours = new Plan(planVide);
+			this.resultatCraft = null;
+		}
+		this.resultatCraft = this.plans.chercher(this.planEnCours);
 	}
-
+	
+	
 	//pour charger tous les items au lancement de l'application
 	//nécessite de savoir où/comment sont stockées/codées les infos
 	public void chargerItem() throws IOException {
@@ -63,4 +87,21 @@ public class Modele {
 		
 	}
 
+	// pour enregistrer l'état de l'appli (sur demande de l'user)
+	public void enregistrerEtat() {
+		try {
+			FileOutputStream fos = new FileOutputStream(this.fichierInv);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.inventaire);
+			
+			fos = new FileOutputStream(this.fichierTab);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.planEnCours);
+			
+			oos.close();
+			fos.close();
+		} catch(IOException e1) {
+			throw new RuntimeException("Impossible d'écrire les données");
+		}
+	}
 }

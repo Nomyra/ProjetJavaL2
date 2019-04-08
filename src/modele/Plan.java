@@ -1,7 +1,8 @@
 package modele;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Plan{
+public class Plan implements Serializable{
 	
 	String[][] plan;
 	

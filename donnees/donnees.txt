@@ -69,3 +69,53 @@ leather_leggings;leather,leather,leather/leather, ,leather/leather, ,leather;1;A
 leather_chestplate;leather, ,leather/leather,leather,leather/leather,leather,leather;1;ARMURES
 item_frame;stick,stick,stick/stick,leather,stick/stick,stick,stick;1;BOIS
 apple;NOURRITURE
+Ecaille_de_tortue;MATIERES_PREMIERES
+turtle_helmet; , , /Ecaille_de_tortue,Ecaille_de_tortue,Ecaille_de_tortue/Ecaille_de_tortue, ,Ecaille_de_tortue;1;ARMURES
+blaze_rod;MATIERES_PREMIERES
+blaze_powder; , , / ,blaze_rod, / , , ;2;ALCHIMIE
+slime_ball; , , / ,Bloc_de_Slime, / , , ;9;MATIERES_PREMIERES
+magma_cream; , , /slime_ball,blaze_powder, / , , ;1;ALCHIMIE
+Bloc_de_Slime;slime_ball,slime_ball,slime_ball/slime_ball,slime_ball,slime_ball/slime_ball,slime_ball,slime_ball;1;MATIERES_PREMIERES
+lead;string,string, /string,slime_ball, / , ,string;2;OUTILS
+sugar_cane;MATIERES_PREMIERES
+sugar; , , / ,sugar_cane, / , , ;1;NOURRITURE
+Papier; , , / , , /sugar_cane,sugar_cane,sugar_cane;3;MATIERES_PREMIERES
+book; , , /leather,Papier, /Papier,Papier, ;1;MATIERES_PREMIERES
+Table_de_cartographie; , , /Papier,Papier, /Planches_de_chene,Planches_de_chene, ;1;OUTILS
+redstone; , , / ,Bloc_de_redstone, / , , ;9;MATIERES_PREMIERES
+Bloc_de_redstone;redstone,redstone,redstone/redstone,redstone,redstone/redstone,redstone,redstone;1;MATIERES_PREMIERES
+compass; ,iron_ingot, /iron_ingot,redstone,iron_ingot/ ,iron_ingot, ;1;OUTILS
+empty_map;Papier,Papier,Papier/Papier,compass,Papier/Papier,Papier,Papier;1;OUTILS
+Bloc_musical;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene,redstone,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1;REDSTONE
+Torche_de_redstone; , , / ,redstone, / ,stick, ;1;
+activator_rails;iron_ingot,stick,iron_ingot/iron_ingot,Torche_de_redstone,iron_ingot/iron_ingot,stick,iron_ingot;6;TRANSPORT
+Pierres;MATIERES_PREMIERES
+Distributeur;Pierres,Pierres,Pierres/Pierres,bow,Pierres/Pierres,redstone,Pierres;1;REDSTONE
+Dropper;Pierres,Pierres,Pierres/Pierres, ,Pierres/Pierres,redstone,Pierres;1;REDSTONE
+piston;Planches_de_chene,Planches_de_chene,Planches_de_chene/Pierres,iron_ingot,Pierres/Pierres,redstone,Pierres;1;REDSTONE
+piston_gluant; , , / ,slime_ball, / ,piston, ;1;REDSTONE
+brewin_stand; , , / ,blaze_rod, /Pierres,Pierres,Pierres;1;ALCHIMIE
+Dalle_de_pierre; , , / , , /Pierres,Pierres,Pierres;6;PIERRE
+Fourneau;Pierres,Pierres,Pierres/Pierres, ,Pierres/Pierres,Pierres,Pierres;1;PIERRE
+Escaliers_en_pierre; , ,Pierres/ ,Pierres,Pierres/Pierres,Pierres,Pierres;4;PIERRE
+stone_axe;Pierres,Pierres, /Pierres,stick, / ,stick, ;1;OUTILS
+stone_hoe;Pierres,Pierres, / ,stick, / ,stick, ;1;OUTILS
+stone_shovel; ,Pierres, / ,stick, / ,stick, ;1;OUTILS
+stone_pickaxe;Pierres,Pierres,Pierres/ ,stick, / ,stick, ;1;OUTILS
+stone_sword; ,Pierres, / ,Pierres, / ,stick, ;1;ARMES
+Levier; , , / ,stick, / ,Pierres, ;1;REDSTONE
+Muret_de_pierres; , , /Pierres,Pierres,Pierres/Pierres,Pierres,Pierres;6;PIERRE
+Etabli; , , / ,Planches_de_chene,Planches_de_chene/ ,Planches_de_chene,Planches_de_chene;1;BOIS
+Table_de_forge; , , /Etabli,Pierres, / , , ;1;PIERRE
+Fumoir; ,Planches_de_chene, /Planches_de_chene,Fourneau,Planches_de_chene/ ,Planches_de_chene, ;1;PIERRE
+quartz;MATIERES_PREMIERES
+Bloc_de_quartz; , , /quartz,quartz, /quartz,quartz, ;1;MATIERES_PREMIERES
+Escaliers_en _quartz; , ,Bloc_de_quartz/ ,Bloc_de_quartz,Bloc_de_quartz/Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;4;PIERRE
+Dalle_en_quartz; , , / , , /Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;6;PIERRE
+Observateur;Pierres,Pierres,Pierres/redstone,redstone,quartz/Pierres,Pierres,Pierres;1;REDSTONE
+Diorite; , , /Pierres,quartz, /quartz,Pierres, ;2;PIERRE
+Andesite; , , /Pierres,Diorite, / , , ;2;PIERRE
+Roche;MATIERES_PREMIERES
+Bouton_en_pierre; , , / ,Roche, / , , ;1;PIERRE
+comparator; ,Torche_de_redstone, /Torche_de_redstone,quartz,Torche_de_redstone/Roche,Roche,Roche;1;REDSTONE
+Escalier_de_roche; , ,Roche/ ,Roche,Roche/Roche,Roche,Roche;4;PIERRE

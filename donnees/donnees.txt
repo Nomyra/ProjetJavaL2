@@ -87,7 +87,7 @@ Bloc_de_redstone;redstone,redstone,redstone/redstone,redstone,redstone/redstone,
 compass; ,iron_ingot, /iron_ingot,redstone,iron_ingot/ ,iron_ingot, ;1;OUTILS
 empty_map;Papier,Papier,Papier/Papier,compass,Papier/Papier,Papier,Papier;1;OUTILS
 Bloc_musical;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene,redstone,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1;REDSTONE
-Torche_de_redstone; , , / ,redstone, / ,stick, ;1;
+Torche_de_redstone; , , / ,redstone, / ,stick, ;1;REDSTONE
 activator_rails;iron_ingot,stick,iron_ingot/iron_ingot,Torche_de_redstone,iron_ingot/iron_ingot,stick,iron_ingot;6;TRANSPORT
 Pierres;MATIERES_PREMIERES
 Distributeur;Pierres,Pierres,Pierres/Pierres,bow,Pierres/Pierres,redstone,Pierres;1;REDSTONE
@@ -119,3 +119,44 @@ Roche;MATIERES_PREMIERES
 Bouton_en_pierre; , , / ,Roche, / , , ;1;PIERRE
 comparator; ,Torche_de_redstone, /Torche_de_redstone,quartz,Torche_de_redstone/Roche,Roche,Roche;1;REDSTONE
 Escalier_de_roche; , ,Roche/ ,Roche,Roche/Roche,Roche,Roche;4;PIERRE
+Dalle_de_roche; , , / , , /Roche,Roche,Roche;6;PIERRE
+repeater; , , /Torche_de_redstone,redstone,Torche_de_redstone/Roche,Roche,Roche;1;REDSTONE
+Plaque_de_pression_en_pierre; , , / , , /Roche,Roche, ;1;PIERRE
+Tailleur_de_pierre; , , / ,iron_ingot, /Roche,Roche,Roche;1;PIERRE
+armor_stand;stick,stick,stick/ ,stick, /stick,Dalle_de_roche,stick;1;BOIS
+furnace_minecart; , , / ,Fourneau, / ,minecart, ;1;TRANSPORT
+emerald; , , / ,Bloc_emeraude, / , , ;9;MATIERES_PREMIERES
+Bloc_emeraude;emerald,emerald,emerald/emerald,emerald,emerald/emerald,emerald,emerald;1;MATIERES_PREMIERES
+diamond; , , / ,Bloc_de_diamant, / , , ;9;MATIERES_PREMIERES
+Bloc_de_diamant;diamond,diamond,diamond/diamond,diamond,diamond/diamond,diamond,diamond;1;MATIERES_PREMIERES
+diamond_boots; , , /diamond, ,diamond/diamond, ,diamond;1;ARMURES
+diamond_helmet; , , /diamond,diamond,diamond/diamond, ,diamond;1;ARMURES
+diamond_axe;diamond,diamond, /diamond,stick, / ,stick, ;1;OUTILS
+diamond_hoe;diamond,diamond, / ,stick, / ,stick, ;1;OUTILS
+diamond_leggings;diamond,diamond,diamond/diamond, ,diamond/diamond, ,diamond;1;ARMURES
+diamond_shovel; ,diamond, / ,stick, / ,stick, ;1;OUTILS
+diamond_pickaxe;diamond,diamond,diamond/ ,stick, / ,stick, ;1;OUTILS
+diamond_chestplate;diamond, ,diamond/diamond,diamond,diamond/diamond,diamond,diamond;1;ARMURES
+diamond_sword; ,diamond, / ,diamond, / ,stick, ;1;ARMES
+Jukebox;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene,diamond,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1;REDSTONE
+melon_slice;NOURRITURE
+gold_nugget; , , / ,gold_ingot, / , , ;9;MATIERES_PREMIERES
+gold_ingot;gold_nugget,gold_nugget,gold_nugget/gold_nugget,gold_nugget,gold_nugget/gold_nugget,gold_nugget,gold_nugget;1;MATIERES_PREMIERES
+speckled_melon;gold_nugget,gold_nugget,gold_nugget/gold_nugget,melon_slice,gold_nugget/gold_nugget,gold_nugget,gold_nugget;1;ALCHIMIE
+golden_carrot;gold_nugget,gold_nugget,gold_nugget/gold_nugget,carrot,gold_nugget/gold_nugget,gold_nugget,gold_nugget;1;ALCHIMIE
+golden_boots; , , /gold_ingot, ,gold_ingot/gold_ingot, ,gold_ingot;1;ARMURES
+golden_helmet; , , /gold_ingot,gold_ingot,gold_ingot/gold_ingot, ,gold_ingot;1;ARMURES
+golden_axe;gold_ingot,gold_ingot, /gold_ingot,stick, / ,stick, ;1;OUTILS
+golden_hoe;gold_ingot,gold_ingot, / ,stick, / ,stick, ;1;OUTILS
+golden_leggings;gold_ingot,gold_ingot,gold_ingot/gold_ingot, ,gold_ingot/gold_ingot, ,gold_ingot;1;ARMURES
+golden_shovel; ,gold_ingot, / ,stick, / ,stick, ;1;OUTILS
+golden_pickaxe;gold_ingot,gold_ingot,gold_ingot/ ,stick, / ,stick, ;1;OUTILS
+golden_chestplate;gold_ingot, ,gold_ingot/gold_ingot,gold_ingot,gold_ingot/gold_ingot,gold_ingot,gold_ingot;1;ARMURES
+golden_sword; ,gold_ingot, / ,gold_ingot, / ,stick, ;1;ARMES
+golden_apple;gold_ingot,gold_ingot,gold_ingot/gold_ingot,apple,gold_ingot/gold_ingot,gold_ingot,gold_ingot;1;NOURRITURE
+Plaque_de_pression_ponderee_legere; , , /gold_ingot,gold_ingot, / , , ;1;REDSTONE
+Bloc_or;gold_ingot,gold_ingot,gold_ingot/gold_ingot,gold_ingot,gold_ingot/gold_ingot,gold_ingot,gold_ingot;1;MATIERES_PREMIERES
+clock; ,gold_ingot, /gold_ingot,redstone,gold_ingot/ ,gold_ingot, ;1;REDSTONE
+Pomme_doree_enchantee;Bloc_or,Bloc_or,Bloc_or/Bloc_or,apple,Bloc_or/Bloc_or,Bloc_or,Bloc_or;1;NOURRITURE
+Obsidienne;MATIERES_PREMIERES
+Table_enchantement; ,book, /diamond,Obsidienne,diamond/Obsidienne,Obsidienne,Obsidienne;1;REDSTONE

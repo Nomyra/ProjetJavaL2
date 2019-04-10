@@ -55,6 +55,7 @@ public class Modele {
 	//nécessite de savoir où/comment sont stockées/codées les infos
 	public void chargerItem() throws IOException {
 		this.categories = new ArrayList<String>();
+		this.nom = new ArrayList<String>();
 		this.plans = new TablePlans();
 		this.reserve = new TableItems();
 		String m;

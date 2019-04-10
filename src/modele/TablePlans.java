@@ -22,6 +22,5 @@ public class TablePlans extends Hashtable<Integer, Item> implements Serializable
 			return null;
 		}
 	}
-
 }
 

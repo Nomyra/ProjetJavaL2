@@ -87,7 +87,7 @@ Bloc_de_redstone;redstone,redstone,redstone/redstone,redstone,redstone/redstone,
 compass; ,iron_ingot, /iron_ingot,redstone,iron_ingot/ ,iron_ingot, ;1;OUTILS
 empty_map;Papier,Papier,Papier/Papier,compass,Papier/Papier,Papier,Papier;1;OUTILS
 Bloc_musical;Planches_de_chene,Planches_de_chene,Planches_de_chene/Planches_de_chene,redstone,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1;REDSTONE
-Torche_de_redstone; , , / ,redstone, / ,stick, ;1;
+Torche_de_redstone; , , / ,redstone, / ,stick, ;1;REDSTONE
 activator_rails;iron_ingot,stick,iron_ingot/iron_ingot,Torche_de_redstone,iron_ingot/iron_ingot,stick,iron_ingot;6;TRANSPORT
 Pierres;MATIERES_PREMIERES
 Distributeur;Pierres,Pierres,Pierres/Pierres,bow,Pierres/Pierres,redstone,Pierres;1;REDSTONE

@@ -84,11 +84,6 @@ public class Modele {
 		f.close();
 		br.close();
 	}
-	
-	// pour mettre planEnCours à jour quand il change
-	public void changerPlanEnCours() {
-		
-	}
 
 	// pour enregistrer l'état de l'appli (sur demande de l'user)
 	public void enregistrerEtat() {
@@ -106,5 +101,10 @@ public class Modele {
 		} catch(IOException e1) {
 			throw new RuntimeException("Impossible d'écrire les données");
 		}
+	}
+	
+	public void resetSauvegarde() {
+		this.fichierInv.delete();
+		this.fichierTab.delete();
 	}
 }

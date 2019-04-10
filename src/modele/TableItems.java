@@ -10,6 +10,6 @@ public class TableItems extends Hashtable<String,Item> implements Serializable{
 	}
 	
 	public void ajouter(Item i) {
-		this.put(i.categorie+i.nom, i);
+		this.put(i.nom, i);
 	}
 }

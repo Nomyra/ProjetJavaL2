@@ -22,7 +22,6 @@ public class MainController {
 
     @FXML
     private void initialize() {
-
         searchButton.setText("Search");
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             searchLabel.setText(newValue);
@@ -35,15 +34,6 @@ public class MainController {
         for (int i=0; i<modele.categories.size(); i++){
             TableColumn col = new TableColumn(modele.categories.get(i));
             reserve.getColumns().addAll(col);
-
-          /*  Pattern p = Pattern.compile("(^"+modele.categories.get(i)+")");
-            Matcher m = p.matcher(modele.reserve.keySet().toString());
-            Boolean b = m.lookingAt();
-            System.out.println(p);
-            System.out.println(m);
-            System.out.println(b);*/
         }
     }
-
-
 }

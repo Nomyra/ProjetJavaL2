@@ -10,9 +10,13 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
+
 public class Modele {
 
 	public ArrayList<String> categories; //liste des catégories existantes
+	public ArrayList<String> nom; //liste des noms d'item(clés reserve)
 	public TablePlans plans; //réserve de plans disponibles
 	public Plan planEnCours; //plan en cours sur la table de craft
 	public Inventaire inventaire; //inventaire des objets détenus par l'utilisateur (par nom et quantité)
@@ -28,7 +32,6 @@ public class Modele {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		try {
 			FileInputStream fis = new FileInputStream(this.fichierInv);
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -51,9 +54,9 @@ public class Modele {
 	
 	
 	//pour charger tous les items au lancement de l'application
-	//nécessite de savoir où/comment sont stockées/codées les infos
 	public void chargerItem() throws IOException {
 		this.categories = new ArrayList<String>();
+		this.nom = new ArrayList<String>();
 		this.plans = new TablePlans();
 		this.reserve = new TableItems();
 		String m;
@@ -63,7 +66,8 @@ public class Modele {
 		Item it;
 		while ((m = br.readLine()) != null){
 			tab = m.split(";");
-			if (tab.length >= 3) {
+			nom.add(tab[0]);
+			if (tab.length == 4) {
 				String[] sousTab = tab[1].split("/");
 				String[][] pl = {sousTab[0].split(","),sousTab[1].split(","),sousTab[2].split(",")};
 				Plan p1 = new Plan(pl);
@@ -80,11 +84,6 @@ public class Modele {
 
 		f.close();
 		br.close();
-	}
-	
-	// pour mettre planEnCours à jour quand il change
-	public void changerPlanEnCours() {
-		
 	}
 
 	// pour enregistrer l'état de l'appli (sur demande de l'user)
@@ -103,5 +102,11 @@ public class Modele {
 		} catch(IOException e1) {
 			throw new RuntimeException("Impossible d'écrire les données");
 		}
+	}
+	
+	// supprime la sauvegarde existante
+	public void resetSauvegarde() {
+		this.fichierInv.delete();
+		this.fichierTab.delete();
 	}
 }

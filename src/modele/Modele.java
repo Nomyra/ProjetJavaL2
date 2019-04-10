@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Modele {
 
 	public ArrayList<String> categories; //liste des catégories existantes
+	public ArrayList<String> nom; //liste des noms d'item(clés reserve)
 	public TablePlans plans; //réserve de plans disponibles
 	public Plan planEnCours; //plan en cours sur la table de craft
 	public Inventaire inventaire; //inventaire des objets détenus par l'utilisateur (par nom et quantité)
@@ -63,7 +64,8 @@ public class Modele {
 		Item it;
 		while ((m = br.readLine()) != null){
 			tab = m.split(";");
-			if (tab.length >= 3) {
+			nom.add(tab[0]);
+			if (tab.length == 4) {
 				String[] sousTab = tab[1].split("/");
 				String[][] pl = {sousTab[0].split(","),sousTab[1].split(","),sousTab[2].split(",")};
 				Plan p1 = new Plan(pl);

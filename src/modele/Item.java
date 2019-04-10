@@ -33,6 +33,18 @@ public class Item implements Serializable{
 	public String toString() {
 		return this.nom +" "+ this.categorie;
 	}
+	
+	public Inventaire besoins() {
+		Inventaire besoin = new Inventaire();
+		for (int i=0; i<3; i++) {
+			for (int j=0; j<3; j++) {
+				if (this.plan.plan[i][j] != "") {
+					besoin.ajouter(this.plan.plan[i][j], 1);
+				}
+			}
+		}
+		return besoin;
+	}
 
 
 	public String getNom() {

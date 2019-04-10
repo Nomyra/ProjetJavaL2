@@ -10,6 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
+
 public class Modele {
 
 	public ArrayList<String> categories; //liste des catégories existantes
@@ -29,7 +32,6 @@ public class Modele {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		try {
 			FileInputStream fis = new FileInputStream(this.fichierInv);
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -52,7 +54,6 @@ public class Modele {
 	
 	
 	//pour charger tous les items au lancement de l'application
-	//nécessite de savoir où/comment sont stockées/codées les infos
 	public void chargerItem() throws IOException {
 		this.categories = new ArrayList<String>();
 		this.nom = new ArrayList<String>();
@@ -103,6 +104,7 @@ public class Modele {
 		}
 	}
 	
+	// supprime la sauvegarde existante
 	public void resetSauvegarde() {
 		this.fichierInv.delete();
 		this.fichierTab.delete();

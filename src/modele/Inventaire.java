@@ -2,6 +2,8 @@ package modele;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class Inventaire extends HashMap<String,Integer> implements Serializable{
 
@@ -23,5 +25,20 @@ public class Inventaire extends HashMap<String,Integer> implements Serializable{
 		} else {
 			this.replace(s, this.get(s)-1);
 		}
+	}
+	
+	public Inventaire comparer(Inventaire i) {
+		String nom;
+		Set<String> k = i.keySet();
+		Iterator<String> it = k.iterator();
+		Inventaire inv = new Inventaire();
+		inv.putAll(i);
+		while (it.hasNext()) {
+			nom = it.next();
+			if (this.get(nom) != null && this.get(nom)>inv.get(nom)) {
+				inv.retirer(nom);
+			}
+		}
+		return inv;
 	}
 }

@@ -30,8 +30,11 @@ public class MainController {
     public void reserve(Modele modele){
         for (int i=0; i<modele.categories.size(); i++){
             String labelCategorie = modele.categories.get(i);
-            Button button = new Button(labelCategorie);
-            button.setId("b_"+labelCategorie);
+            Button button = new Button();
+            ImageView iv = new ImageView("resource/images/categories/"+labelCategorie+".png");
+            iv.setFitWidth(20);iv.setFitHeight(20);
+            button.setId("b_categorie");
+            button.setGraphic(iv);
             hbCategorie.getChildren().add(button);
             button.setOnAction((e) ->{ afficheItem(labelCategorie, modele); });
         }
@@ -47,8 +50,7 @@ public class MainController {
 
             if (Objects.equals(item.categorie,c)) {
                 ImageView iv = new ImageView("resource/images/items/"+cle+".png");
-                iv.setFitWidth(50);
-                iv.setFitHeight(50);
+                iv.setFitWidth(50);iv.setFitHeight(50);
                 iv.setId(cle);
                 reserve.getChildren().add(iv);
             }

@@ -2,9 +2,6 @@
     -fx-background-color: red;
     -fx-text-fill: white;
 }
-#gridCraft{
-    -fx-background-color: white;
-}
-#reserve, #vboxreserve #hbCategorie button{
-    -fx-background-color: #B2DCD7;
-}
+#gridCraft{-fx-background-color: white;}
+#reserve{-fx-background-color: #B2DCD7;}
+#b_categorie{-fx-border-style: none;}

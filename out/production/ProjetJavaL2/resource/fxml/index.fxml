@@ -60,9 +60,7 @@
       <VBox id="VBox" alignment="CENTER" layoutY="268.0" prefHeight="251.0" prefWidth="842.0">
          <children>
             <TableView fx:id="reserve" prefHeight="263.0" prefWidth="840.0">
-              <columns>
-
-              </columns>
+              <columns></columns>
             </TableView>
             <TitledPane fx:id="inventaire" alignment="CENTER" animated="false" contentDisplay="CENTER" text="Inventaire" textAlignment="CENTER">
               <content>

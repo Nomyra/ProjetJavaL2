@@ -42,4 +42,12 @@ public class Plan implements Serializable{
 		}
 		return m;
 	}
+	
+	public void modifierPlan(int i, int j, String objet) {
+		this.plan[i][j] = objet;
+	}
+	
+	public void modifierPlan(int i, int j) {
+		this.plan[i][j] = null;
+	}
 }

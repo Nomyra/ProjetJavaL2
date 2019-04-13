@@ -10,6 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javafx.scene.image.Image;
+
+
 public class Modele {
 
 	public ArrayList<String> categories; //liste des catégories existantes
@@ -29,7 +32,6 @@ public class Modele {
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
 		try {
 			FileInputStream fis = new FileInputStream(this.fichierInv);
 			ObjectInputStream ois = new ObjectInputStream(fis);
@@ -52,7 +54,6 @@ public class Modele {
 	
 	
 	//pour charger tous les items au lancement de l'application
-	//nécessite de savoir où/comment sont stockées/codées les infos
 	public void chargerItem() throws IOException {
 		this.categories = new ArrayList<String>();
 		this.nom = new ArrayList<String>();
@@ -84,11 +85,6 @@ public class Modele {
 		f.close();
 		br.close();
 	}
-	
-	// pour mettre planEnCours à jour quand il change
-	public void changerPlanEnCours() {
-		
-	}
 
 	// pour enregistrer l'état de l'appli (sur demande de l'user)
 	public void enregistrerEtat() {
@@ -106,5 +102,11 @@ public class Modele {
 		} catch(IOException e1) {
 			throw new RuntimeException("Impossible d'écrire les données");
 		}
+	}
+	
+	// supprime la sauvegarde existante
+	public void resetSauvegarde() {
+		this.fichierInv.delete();
+		this.fichierTab.delete();
 	}
 }

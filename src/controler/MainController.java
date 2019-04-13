@@ -2,38 +2,56 @@ package controler;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import modele.Item;
 import modele.Modele;
-//import java.util.regex.*;
-
+import java.util.*;
 
 public class MainController {
-   // private static Pattern pattern;
-    //private static Matcher matcher;
     @FXML
-    private TextField searchField;
+    private FlowPane reserve;
     @FXML
-    private Button searchButton;
+    private HBox hbCategorie;
     @FXML
-    private Label searchLabel;
-    @FXML
-    private TableView<Modele> reserve;
+    private VBox vboxreserve;
 
     public MainController(){}
 
     @FXML
     private void initialize() {
-        searchButton.setText("Search");
-        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchLabel.setText(newValue);
-        });
         Modele m = new Modele();
         reserve(m);
     }
 
+    //Ajoute les catégories
     public void reserve(Modele modele){
         for (int i=0; i<modele.categories.size(); i++){
-            TableColumn col = new TableColumn(modele.categories.get(i));
-            reserve.getColumns().addAll(col);
+            String labelCategorie = modele.categories.get(i);
+            Button button = new Button(labelCategorie);
+            button.setId("b_"+labelCategorie);
+            hbCategorie.getChildren().add(button);
+            button.setOnAction((e) ->{ afficheItem(labelCategorie, modele); });
+        }
+    }
+
+    //Affiche les items par catégories
+    public void afficheItem(String c, Modele modele) {
+        reserve.getChildren().removeAll(reserve.getChildren());
+
+        for (int x = 0; x < modele.nom.size(); x++) {
+            String cle = modele.nom.get(x);
+            Item item = modele.reserve.get(cle);
+
+            if (Objects.equals(item.categorie,c)) {
+                ImageView iv = new ImageView("resource/images/items/"+cle+".png");
+                iv.setFitWidth(50);
+                iv.setFitHeight(50);
+                iv.setId(cle);
+                reserve.getChildren().add(iv);
+            }
         }
     }
 }

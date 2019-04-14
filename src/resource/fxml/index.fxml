@@ -3,7 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,7 +16,7 @@
 
 <AnchorPane prefHeight="766.0" prefWidth="842.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
     <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0">
+        <BorderPane layoutX="61.0" prefHeight="200.0" prefWidth="712.0">
             <left>
                 <GridPane fx:id="gridCraft" gridLinesVisible="true" prefHeight="250.0" prefWidth="250.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
@@ -30,9 +30,9 @@
                         <RowConstraints fx:id="row3" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                <children>
-                  <Pane fx:id="row0col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                  <Pane fx:id="row0col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-                  <Pane fx:id="row0col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                  <Pane fx:id="row0col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <Pane fx:id="row0col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <Pane fx:id="row0col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
                   <Pane fx:id="row1col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                   <Pane fx:id="row1col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Pane fx:id="row1col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -43,7 +43,10 @@
                 </GridPane>
             </left>
             <right>
-                <ImageView fx:id="resultat" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+            <Pane fx:id="resultatPane" prefHeight="151.0" prefWidth="192.0" BorderPane.alignment="CENTER">
+               <children>
+               </children>
+            </Pane>
             </right>
             <center>
                 <Button fx:id="crafter" alignment="CENTER" ellipsisString="Craft" mnemonicParsing="false" text="Craft" textAlignment="CENTER" BorderPane.alignment="CENTER">
@@ -53,7 +56,13 @@
                 </Button>
             </center>
         </BorderPane>
-        <VBox fx:id="vboxreserve" layoutY="223.0" prefHeight="294.0" prefWidth="842.0">
+      <VBox layoutY="230.0" prefHeight="245.0" prefWidth="842.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="41.0" prefWidth="846.0" styleClass="hinventaire" text="Inventaire" />
+            <FlowPane fx:id="inventairePane" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+        <VBox fx:id="vboxreserve" layoutY="507.0" prefHeight="245.0" prefWidth="842.0">
          <children>
               <HBox fx:id="hbCategorie" prefHeight="40.0" prefWidth="835.0">
                   <cursor>

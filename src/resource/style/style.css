@@ -1,7 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Pacifico");
 .button#crafter {
     -fx-background-color: red;
     -fx-text-fill: white;
 }
 #gridCraft{-fx-background-color: white;}
-#reserve{-fx-background-color: #B2DCD7;}
+#reserve,#inventairePane{-fx-background-color: #B2DCD7;}
 #b_categorie{-fx-border-style: none;}
+Label.hinventaire{
+   -fx-font: bold 25px Pacifico;
+}

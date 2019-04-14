@@ -41,7 +41,9 @@ public class MainController {
     @FXML
     private Button crafter;
     @FXML
-    private ImageView resultat;
+    private Pane resultatPane;
+    @FXML
+    private FlowPane inventairePane;
 
     private String id;
 
@@ -55,15 +57,28 @@ public class MainController {
         crafter.setOnAction(e -> crafte(m,tabPane));
 
         // click table craft -> suprime item
-        row2col2.setOnMouseClicked(e-> row2col2.getChildren().remove(0));
-        row2col1.setOnMouseClicked(e-> row2col1.getChildren().remove(0));
-        row2col0.setOnMouseClicked(e-> row2col0.getChildren().remove(0));
-        row1col0.setOnMouseClicked(e-> row1col0.getChildren().remove(0));
-        row1col1.setOnMouseClicked(e-> row1col1.getChildren().remove(0));
-        row1col2.setOnMouseClicked(e-> row1col2.getChildren().remove(0));
-        row0col2.setOnMouseClicked(e-> row0col2.getChildren().remove(0));
-        row0col1.setOnMouseClicked(e-> row0col1.getChildren().remove(0));
-        row0col0.setOnMouseClicked(e-> row0col0.getChildren().remove(0));
+        row2col2.setOnMouseClicked(e-> {if (row2col2.getChildren().size() > 0){row2col2.getChildren().remove(0);}});
+        row2col1.setOnMouseClicked(e-> {if (row2col1.getChildren().size() > 0){row2col1.getChildren().remove(0);}});
+        row2col0.setOnMouseClicked(e-> {if (row2col0.getChildren().size() > 0){row2col0.getChildren().remove(0);}});
+        row1col0.setOnMouseClicked(e-> {if (row1col0.getChildren().size() > 0){row1col0.getChildren().remove(0);}});
+        row1col1.setOnMouseClicked(e-> {if (row1col1.getChildren().size() > 0){row1col1.getChildren().remove(0);}});
+        row1col2.setOnMouseClicked(e-> {if (row1col2.getChildren().size() > 0){row1col2.getChildren().remove(0);}});
+        row0col2.setOnMouseClicked(e-> {if (row0col2.getChildren().size() > 0){row0col2.getChildren().remove(0);}});
+        row0col1.setOnMouseClicked(e-> {if (row0col1.getChildren().size() > 0){row0col1.getChildren().remove(0);}});
+        row0col0.setOnMouseClicked(e-> {if (row0col0.getChildren().size() > 0){row0col0.getChildren().remove(0);}});
+
+        resultatPane.setOnMouseClicked(e ->{
+            if (resultatPane.getChildren().size() > 0){
+                addItemInventaire(resultatPane.getChildren().get(0).getId());
+            }
+        });
+    }
+
+    public void addItemInventaire(String id){
+        ImageView iv = new ImageView("resources/images/items/"+id+".png");
+        iv.setId(id);
+        inventairePane.getChildren().add(iv);
+        resultatPane.getChildren().remove(0);
     }
 
     //Ajoute les catégories
@@ -123,7 +138,7 @@ public class MainController {
                     img.setFitHeight(50);img.setFitWidth(50);
                     img.setId(id);
                     if(pane.getChildren().size()>0){
-                        pane.getChildren().removeAll(pane.getChildren());
+                        pane.getChildren().remove(0);
                     }
                     pane.getChildren().add(img);
                     sucess = true;
@@ -155,8 +170,12 @@ public class MainController {
         System.out.println(p+" --> "+res);
 
         if (res!=null){
-            Image img = new Image("resource/images/items/"+p+".png");
-            resultat.setImage(img);
+            if (resultatPane.getChildren().size()>0){
+                addItemInventaire(resultatPane.getChildren().get(0).getId());
+            }
+            ImageView iv = new ImageView("resource/images/items/"+res.nom+".png");
+            iv.setId(res.nom);
+            resultatPane.getChildren().add(iv);
         }
     }
 }

@@ -30,20 +30,20 @@
                         <RowConstraints fx:id="row3" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                <children>
-                  <Pane fx:id="row0col0" prefHeight="200.0" prefWidth="200.0" />
-                  <Pane fx:id="row0col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
-                  <Pane fx:id="row0col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-                  <Pane fx:id="row1col0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <Pane fx:id="row0col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                  <Pane fx:id="row0col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                  <Pane fx:id="row0col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                  <Pane fx:id="row1col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                   <Pane fx:id="row1col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Pane fx:id="row1col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <Pane fx:id="row2col0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
+                  <Pane fx:id="row2col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                   <Pane fx:id="row2col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Pane fx:id="row2col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                </children>
                 </GridPane>
             </left>
             <right>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+                <ImageView fx:id="resultat" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
             </right>
             <center>
                 <Button fx:id="crafter" alignment="CENTER" ellipsisString="Craft" mnemonicParsing="false" text="Craft" textAlignment="CENTER" BorderPane.alignment="CENTER">

@@ -9,6 +9,7 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import modele.Item;
 import modele.Modele;
+import modele.Plan;
 
 import java.util.*;
 
@@ -35,6 +36,14 @@ public class MainController {
     private Pane row2col1;
     @FXML
     private Pane row2col2;
+    @FXML
+    private GridPane gridCraft;
+    @FXML
+    private Button crafter;
+    @FXML
+    private ImageView resultat;
+
+    private String id;
 
     public MainController(){}
 
@@ -42,6 +51,19 @@ public class MainController {
     private void initialize() {
         Modele m = new Modele();
         reserve(m);
+        Pane[][] tabPane = {{row0col0,row0col1,row0col2},{row1col0,row1col1,row1col2},{row2col0,row2col1,row2col2}};
+        crafter.setOnAction(e -> crafte(m,tabPane));
+
+        // click table craft -> suprime item
+        row2col2.setOnMouseClicked(e-> row2col2.getChildren().remove(0));
+        row2col1.setOnMouseClicked(e-> row2col1.getChildren().remove(0));
+        row2col0.setOnMouseClicked(e-> row2col0.getChildren().remove(0));
+        row1col0.setOnMouseClicked(e-> row1col0.getChildren().remove(0));
+        row1col1.setOnMouseClicked(e-> row1col1.getChildren().remove(0));
+        row1col2.setOnMouseClicked(e-> row1col2.getChildren().remove(0));
+        row0col2.setOnMouseClicked(e-> row0col2.getChildren().remove(0));
+        row0col1.setOnMouseClicked(e-> row0col1.getChildren().remove(0));
+        row0col0.setOnMouseClicked(e-> row0col0.getChildren().remove(0));
     }
 
     //Ajoute les catégories
@@ -78,8 +100,8 @@ public class MainController {
 
     public void dragAndDropReserve(ImageView iv){
         Pane[] tabPane = {row0col0,row0col1,row0col2,row1col0,row1col1,row1col2,row2col0,row2col1,row2col2};
-
         iv.setOnDragDetected((MouseEvent e)->{
+            id = iv.getId();
             Dragboard db = iv.startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
             content.putImage(iv.getImage());
@@ -98,8 +120,8 @@ public class MainController {
                 boolean sucess = false;
                 if (db.hasImage()) {
                     ImageView img = new ImageView(db.getImage());
-                    img.setFitHeight(50);
-                    img.setFitWidth(50);
+                    img.setFitHeight(50);img.setFitWidth(50);
+                    img.setId(id);
                     if(pane.getChildren().size()>0){
                         pane.getChildren().removeAll(pane.getChildren());
                     }
@@ -116,5 +138,25 @@ public class MainController {
             }
             e.consume();
         });*/
+    }
+
+    public void crafte(Modele m, Pane[][] tabPane) {
+        String[][] plan = {{null, null, null}, {null, null, null}, {null, null, null}};
+
+        for (int x=0;x<tabPane.length;x++){
+            for(int y=0;y<tabPane.length;y++){
+                if(tabPane[x][y].getChildren().size()>0){
+                    plan[x][y]=tabPane[x][y].getChildren().get(0).getId();
+                }
+            }
+        }
+        Plan p = new Plan(plan);
+        Item res = m.plans.chercher(p);
+        System.out.println(p+" --> "+res);
+
+        if (res!=null){
+            Image img = new Image("resource/images/items/"+p+".png");
+            resultat.setImage(img);
+        }
     }
 }

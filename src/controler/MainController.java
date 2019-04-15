@@ -44,6 +44,8 @@ public class MainController {
     private Pane resultatPane;
     @FXML
     private FlowPane inventairePane;
+    @FXML
+    private Button enregistrer;
 
     private String id;
 
@@ -72,16 +74,28 @@ public class MainController {
                 addItemInventaire(resultatPane.getChildren().get(0).getId());
             }
         });
+
+        enregistrer.setOnAction(e -> m.enregistrerEtat());
     }
 
+    /*-------------
+    E: String id
+    //ajoute l'ImageView de l'item id dans l'invataire
+    S:
+     */
     public void addItemInventaire(String id){
         ImageView iv = new ImageView("resources/images/items/"+id+".png");
         iv.setId(id);
         inventairePane.getChildren().add(iv);
         resultatPane.getChildren().remove(0);
+        dragAndDrop(iv,true);
     }
 
-    //Ajoute les catégories
+    /*----------
+    E: Modele modele
+    // Affiche les onglets catégorie de la reserve
+    S:
+     */
     public void reserve(Modele modele){
         for (int i=0; i<modele.categories.size(); i++){
             String labelCategorie = modele.categories.get(i);
@@ -95,7 +109,11 @@ public class MainController {
         }
     }
 
-    //Affiche les items par catégories
+    /*-----------
+    E: String c, Modele modele
+    //Affiche les items de modele.reserve de la catégorie c dans #reserve
+    S:
+     */
     public void afficheItemReserve(String c, Modele modele) {
         reserve.getChildren().removeAll(reserve.getChildren());
 
@@ -108,12 +126,17 @@ public class MainController {
                 iv.setFitWidth(50);iv.setFitHeight(50);
                 iv.setId(cle);
                 reserve.getChildren().add(iv);
-                dragAndDropReserve(iv);
+                dragAndDrop(iv,false);
             }
         }
     }
-
-    public void dragAndDropReserve(ImageView iv){
+    /*----
+    //E: ImageView iv, Boolean b
+    // drag and drop iv sur la table de craft
+    // si b, supprime iv de la liste
+    //S:
+    -------*/
+    public void dragAndDrop(ImageView iv,Boolean b){
         Pane[] tabPane = {row0col0,row0col1,row0col2,row1col0,row1col1,row1col2,row2col0,row2col1,row2col2};
         iv.setOnDragDetected((MouseEvent e)->{
             id = iv.getId();
@@ -147,14 +170,23 @@ public class MainController {
                 e.consume();
             });
         }
-     /*   iv.setOnDragDone(e ->{
-           if (e.getTransferMode() == TransferMode.COPY){
-                iv.setImage(null);
-            }
-            e.consume();
-        });*/
+        if (b){
+            iv.setOnDragDone(e ->{
+                if (e.getTransferMode() == TransferMode.COPY){
+                    iv.setImage(null);
+                }
+                e.consume();
+            });
+        }
     }
 
+    /* --------------
+    E: Modele m, Pane[][] tabPane (table de craft)
+    //Recupère les items présent dans tabPane
+    //Crée un Plan
+    //Affiche l'item correspondant au Plan si existe
+    S:
+     */
     public void crafte(Modele m, Pane[][] tabPane) {
         String[][] plan = {{null, null, null}, {null, null, null}, {null, null, null}};
 

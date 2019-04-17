@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import modele.Item;
 import modele.Modele;
 import modele.Plan;
+import modele.TablePlans;
 
 import java.util.*;
 
@@ -55,19 +56,18 @@ public class MainController {
     private void initialize() {
         Modele m = new Modele();
         reserve(m);
-        Pane[][] tabPane = {{row0col0,row0col1,row0col2},{row1col0,row1col1,row1col2},{row2col0,row2col1,row2col2}};
-        crafter.setOnAction(e -> crafte(m,tabPane));
+        crafter.setOnAction(e -> crafte(m.plans,m.planEnCours));
 
         // click table craft -> suprime item
-        row2col2.setOnMouseClicked(e-> {if (row2col2.getChildren().size() > 0){row2col2.getChildren().remove(0);}});
-        row2col1.setOnMouseClicked(e-> {if (row2col1.getChildren().size() > 0){row2col1.getChildren().remove(0);}});
-        row2col0.setOnMouseClicked(e-> {if (row2col0.getChildren().size() > 0){row2col0.getChildren().remove(0);}});
-        row1col0.setOnMouseClicked(e-> {if (row1col0.getChildren().size() > 0){row1col0.getChildren().remove(0);}});
-        row1col1.setOnMouseClicked(e-> {if (row1col1.getChildren().size() > 0){row1col1.getChildren().remove(0);}});
-        row1col2.setOnMouseClicked(e-> {if (row1col2.getChildren().size() > 0){row1col2.getChildren().remove(0);}});
-        row0col2.setOnMouseClicked(e-> {if (row0col2.getChildren().size() > 0){row0col2.getChildren().remove(0);}});
-        row0col1.setOnMouseClicked(e-> {if (row0col1.getChildren().size() > 0){row0col1.getChildren().remove(0);}});
-        row0col0.setOnMouseClicked(e-> {if (row0col0.getChildren().size() > 0){row0col0.getChildren().remove(0);}});
+        row2col2.setOnMouseClicked(e-> {if (row2col2.getChildren().size() > 0){row2col2.getChildren().remove(0);m.planEnCours.modifierPlan(2,2);}});
+        row2col1.setOnMouseClicked(e-> {if (row2col1.getChildren().size() > 0){row2col1.getChildren().remove(0);m.planEnCours.modifierPlan(2,1);}});
+        row2col0.setOnMouseClicked(e-> {if (row2col0.getChildren().size() > 0){row2col0.getChildren().remove(0);m.planEnCours.modifierPlan(2,0);}});
+        row1col0.setOnMouseClicked(e-> {if (row1col0.getChildren().size() > 0){row1col0.getChildren().remove(0);m.planEnCours.modifierPlan(1,0);}});
+        row1col1.setOnMouseClicked(e-> {if (row1col1.getChildren().size() > 0){row1col1.getChildren().remove(0);m.planEnCours.modifierPlan(1,1);}});
+        row1col2.setOnMouseClicked(e-> {if (row1col2.getChildren().size() > 0){row1col2.getChildren().remove(0);m.planEnCours.modifierPlan(1,2);}});
+        row0col2.setOnMouseClicked(e-> {if (row0col2.getChildren().size() > 0){row0col2.getChildren().remove(0);m.planEnCours.modifierPlan(0,2);}});
+        row0col1.setOnMouseClicked(e-> {if (row0col1.getChildren().size() > 0){row0col1.getChildren().remove(0);m.planEnCours.modifierPlan(0,1);}});
+        row0col0.setOnMouseClicked(e-> {if (row0col0.getChildren().size() > 0){row0col0.getChildren().remove(0);m.planEnCours.modifierPlan(0,0);}});
 
         resultatPane.setOnMouseClicked(e ->{
             if (resultatPane.getChildren().size() > 0){
@@ -88,7 +88,7 @@ public class MainController {
         iv.setId(id);
         inventairePane.getChildren().add(iv);
         resultatPane.getChildren().remove(0);
-        dragAndDrop(iv,true);
+        //dragAndDrop(iv,true,);
     }
 
     /*----------
@@ -126,7 +126,7 @@ public class MainController {
                 iv.setFitWidth(50);iv.setFitHeight(50);
                 iv.setId(cle);
                 reserve.getChildren().add(iv);
-                dragAndDrop(iv,false);
+                dragAndDrop(iv,false,modele.planEnCours);
             }
         }
     }
@@ -136,7 +136,7 @@ public class MainController {
     // si b, supprime iv de la liste
     //S:
     -------*/
-    public void dragAndDrop(ImageView iv,Boolean b){
+    public void dragAndDrop(ImageView iv,Boolean b, Plan plan){
         Pane[] tabPane = {row0col0,row0col1,row0col2,row1col0,row1col1,row1col2,row2col0,row2col1,row2col2};
         iv.setOnDragDetected((MouseEvent e)->{
             id = iv.getId();
@@ -165,6 +165,11 @@ public class MainController {
                     }
                     pane.getChildren().add(img);
                     sucess = true;
+
+                    //Ajout de l'objet dans plans en cours
+                    String[] tab = pane.getId().split("row");
+                    String[] position = tab[1].split("col");
+                    plan.modifierPlan(Integer.parseInt(position[0]),Integer.parseInt(position[1]),img.getId());
                 }
                 e.setDropCompleted(sucess);
                 e.consume();
@@ -181,30 +186,19 @@ public class MainController {
     }
 
     /* --------------
-    E: Modele m, Pane[][] tabPane (table de craft)
+    E: TablePlans plans, Plan planEncours
     //Recupère les items présent dans tabPane
     //Crée un Plan
     //Affiche l'item correspondant au Plan si existe
     S:
      */
-    public void crafte(Modele m, Pane[][] tabPane) {
-        String[][] plan = {{null, null, null}, {null, null, null}, {null, null, null}};
-
-        for (int x=0;x<tabPane.length;x++){
-            for(int y=0;y<tabPane.length;y++){
-                if(tabPane[x][y].getChildren().size()>0){
-                    plan[x][y]=tabPane[x][y].getChildren().get(0).getId();
-                }
-            }
+    public void crafte(TablePlans plans, Plan planEncours) {
+        Item res = plans.chercher(planEncours);
+        System.out.println(planEncours+" --> "+res);
+        if (resultatPane.getChildren().size()>0){
+            addItemInventaire(resultatPane.getChildren().get(0).getId());
         }
-        Plan p = new Plan(plan);
-        Item res = m.plans.chercher(p);
-        System.out.println(p+" --> "+res);
-
         if (res!=null){
-            if (resultatPane.getChildren().size()>0){
-                addItemInventaire(resultatPane.getChildren().get(0).getId());
-            }
             ImageView iv = new ImageView("resource/images/items/"+res.nom+".png");
             iv.setId(res.nom);
             resultatPane.getChildren().add(iv);

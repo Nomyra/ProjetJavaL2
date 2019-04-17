@@ -17,7 +17,7 @@ public class Plan implements Serializable{
 		int[] init = {0,0};
 		for (int i=0; i<this.plan.length; i++) {
 			for (int j=0; j<this.plan.length; j++) {
-				if (this.plan[i][j] != null) {
+				if (!(this.plan[i][j].equals(" "))) {
 					if (premier) {
 						codeForme += "2";
 						init[0] = i;
@@ -48,6 +48,6 @@ public class Plan implements Serializable{
 	}
 	
 	public void modifierPlan(int i, int j) {
-		this.plan[i][j] = null;
+		this.plan[i][j] = " ";
 	}
 }

@@ -45,7 +45,7 @@ public class Modele {
 			fis.close();
 		} catch(IOException | ClassNotFoundException e) {
 			this.inventaire = new Inventaire();
-			String[][] planVide = {{"","",""},{"","",""},{"","",""}};
+			String[][] planVide = {{" "," "," "},{" "," "," "},{" "," "," "}};
 			this.planEnCours = new Plan(planVide);
 			this.resultatCraft = null;
 		}

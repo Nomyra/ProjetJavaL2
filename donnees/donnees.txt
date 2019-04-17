@@ -56,7 +56,7 @@ Coffre_piege; , , / ,Tripwire_haak,chest/ , , ;1;BOIS
 Banniere_blanche;Laine_blanche,Laine_blanche,Laine_blanche/Laine_blanche,Laine_blanche,Laine_blanche/ ,stick, ;1;BOIS
 Tableau;stick,stick,stick/stick,Laine_blanche,stick/stick,stick,stick;1;BOIS
 Trappe_en_fer; , , /iron_ingot,iron_ingot, /iron_ingot,iron_ingot, ;1;REDSTONE
-hooper;iron_ingot, ,iron_ingot/iron_ingot,chest,iron_ingot/ ,iron_ingot, ;1;REDSTONE
+hopper;iron_ingot, ,iron_ingot/iron_ingot,chest,iron_ingot/ ,iron_ingot, ;1;REDSTONE
 Plaque_de_pression_ponderee_lourde; , , /iron_ingot,iron_ingot, / , , ;1;REDSTONE
 hopper_minecart; , , / ,hopper, / ,minecart, ;1;TRANSPORT
 crossbow;stick,iron_ingot,stick/string,Tripwire_haak,string/ ,stick, ;1;ARMES
@@ -94,7 +94,7 @@ Distributeur;Pierres,Pierres,Pierres/Pierres,bow,Pierres/Pierres,redstone,Pierre
 Dropper;Pierres,Pierres,Pierres/Pierres, ,Pierres/Pierres,redstone,Pierres;1;REDSTONE
 piston;Planches_de_chene,Planches_de_chene,Planches_de_chene/Pierres,iron_ingot,Pierres/Pierres,redstone,Pierres;1;REDSTONE
 piston_gluant; , , / ,slime_ball, / ,piston, ;1;REDSTONE
-brewin_stand; , , / ,blaze_rod, /Pierres,Pierres,Pierres;1;ALCHIMIE
+brewing_stand; , , / ,blaze_rod, /Pierres,Pierres,Pierres;1;ALCHIMIE
 Dalle_de_pierre; , , / , , /Pierres,Pierres,Pierres;6;PIERRE
 Fourneau;Pierres,Pierres,Pierres/Pierres, ,Pierres/Pierres,Pierres,Pierres;1;PIERRE
 Escaliers_en_pierre; , ,Pierres/ ,Pierres,Pierres/Pierres,Pierres,Pierres;4;PIERRE
@@ -110,7 +110,7 @@ Table_de_forge; , , /Etabli,Pierres, / , , ;1;PIERRE
 Fumoir; ,Planches_de_chene, /Planches_de_chene,Fourneau,Planches_de_chene/ ,Planches_de_chene, ;1;PIERRE
 quartz;MATIERES_PREMIERES
 Bloc_de_quartz; , , /quartz,quartz, /quartz,quartz, ;1;MATIERES_PREMIERES
-Escaliers_en _quartz; , ,Bloc_de_quartz/ ,Bloc_de_quartz,Bloc_de_quartz/Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;4;PIERRE
+Escaliers_en_quartz; , ,Bloc_de_quartz/ ,Bloc_de_quartz,Bloc_de_quartz/Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;4;PIERRE
 Dalle_en_quartz; , , / , , /Bloc_de_quartz,Bloc_de_quartz,Bloc_de_quartz;6;PIERRE
 Observateur;Pierres,Pierres,Pierres/redstone,redstone,quartz/Pierres,Pierres,Pierres;1;REDSTONE
 Diorite; , , /Pierres,quartz, /quartz,Pierres, ;2;PIERRE

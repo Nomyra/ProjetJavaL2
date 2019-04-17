@@ -48,6 +48,6 @@ public class Plan implements Serializable{
 	}
 	
 	public void modifierPlan(int i, int j) {
-		this.plan[i][j] = null;
+		this.plan[i][j] = " ";
 	}
 }

@@ -17,6 +17,7 @@ public class TablePlans extends Hashtable<Integer, Item> implements Serializable
 
 	public Item chercher(Plan plan){
 		try {
+			System.out.println(plan.toString() + "->" + plan.hashCode());
 			return this.get(plan.hashCode());
 		} catch(NullPointerException e) {
 			return null;

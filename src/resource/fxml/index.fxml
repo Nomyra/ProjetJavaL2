@@ -45,13 +45,6 @@
             <right>
             <Pane fx:id="resultatPane" prefHeight="151.0" prefWidth="192.0" BorderPane.alignment="CENTER" />
             </right>
-            <center>
-                <Button fx:id="crafter" alignment="CENTER" ellipsisString="Craft" mnemonicParsing="false" text="Craft" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                    <BorderPane.margin>
-                        <Insets left="10.0" />
-                    </BorderPane.margin>
-                </Button>
-            </center>
         </BorderPane>
       <VBox layoutY="278.0" prefHeight="250.0" prefWidth="842.0">
          <children>

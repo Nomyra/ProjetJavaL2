@@ -1,16 +1,15 @@
 package controler;
 
+import com.sun.webkit.Timer;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
-import modele.Item;
-import modele.Modele;
-import modele.Plan;
-import modele.TablePlans;
+import modele.*;
 
 import java.util.*;
 
@@ -38,10 +37,6 @@ public class MainController {
     @FXML
     private Pane row2col2;
     @FXML
-    private GridPane gridCraft;
-    @FXML
-    private Button crafter;
-    @FXML
     private Pane resultatPane;
     @FXML
     private FlowPane inventairePane;
@@ -49,6 +44,8 @@ public class MainController {
     private Button enregistrer;
 
     private String id;
+    private Image image;
+
 
     public MainController(){}
 
@@ -56,39 +53,100 @@ public class MainController {
     private void initialize() {
         Modele m = new Modele();
         reserve(m);
-        crafter.setOnAction(e -> crafte(m.plans,m.planEnCours));
 
-        // click table craft -> suprime item
-        row2col2.setOnMouseClicked(e-> {if (row2col2.getChildren().size() > 0){row2col2.getChildren().remove(0);m.planEnCours.modifierPlan(2,2);}});
-        row2col1.setOnMouseClicked(e-> {if (row2col1.getChildren().size() > 0){row2col1.getChildren().remove(0);m.planEnCours.modifierPlan(2,1);}});
-        row2col0.setOnMouseClicked(e-> {if (row2col0.getChildren().size() > 0){row2col0.getChildren().remove(0);m.planEnCours.modifierPlan(2,0);}});
-        row1col0.setOnMouseClicked(e-> {if (row1col0.getChildren().size() > 0){row1col0.getChildren().remove(0);m.planEnCours.modifierPlan(1,0);}});
-        row1col1.setOnMouseClicked(e-> {if (row1col1.getChildren().size() > 0){row1col1.getChildren().remove(0);m.planEnCours.modifierPlan(1,1);}});
-        row1col2.setOnMouseClicked(e-> {if (row1col2.getChildren().size() > 0){row1col2.getChildren().remove(0);m.planEnCours.modifierPlan(1,2);}});
-        row0col2.setOnMouseClicked(e-> {if (row0col2.getChildren().size() > 0){row0col2.getChildren().remove(0);m.planEnCours.modifierPlan(0,2);}});
-        row0col1.setOnMouseClicked(e-> {if (row0col1.getChildren().size() > 0){row0col1.getChildren().remove(0);m.planEnCours.modifierPlan(0,1);}});
-        row0col0.setOnMouseClicked(e-> {if (row0col0.getChildren().size() > 0){row0col0.getChildren().remove(0);m.planEnCours.modifierPlan(0,0);}});
+        // click table craft -> suprime l'item
+        row2col2.setOnMouseClicked(e-> deleteItemTab(row2col2,m));
+        row2col1.setOnMouseClicked(e-> deleteItemTab(row2col1,m));
+        row2col0.setOnMouseClicked(e-> deleteItemTab(row2col0,m));
+        row1col0.setOnMouseClicked(e-> deleteItemTab(row1col0,m));
+        row1col1.setOnMouseClicked(e-> deleteItemTab(row1col1,m));
+        row1col2.setOnMouseClicked(e-> deleteItemTab(row1col2,m));
+        row0col2.setOnMouseClicked(e-> deleteItemTab(row0col2,m));
+        row0col1.setOnMouseClicked(e-> deleteItemTab(row0col1,m));
+        row0col0.setOnMouseClicked(e-> deleteItemTab(row0col0,m));
 
+        // click resulat du craft -> ajoute l'item à l'invantaire
         resultatPane.setOnMouseClicked(e ->{
             if (resultatPane.getChildren().size() > 0){
-                addItemInventaire(resultatPane.getChildren().get(0).getId());
+                addItemInventaire(resultatPane.getChildren().get(0).getId(),true,m.inventaire,m.resultatCraft);
+                deleteItemsTab(m.planEnCours);
             }
         });
 
         enregistrer.setOnAction(e -> m.enregistrerEtat());
+
+        // Drag and drop detecte
+        inventairePane.setOnMouseMoved(e ->{
+            for (int i=0; i<inventairePane.getChildren().size();i++){
+                dragAndDrop(inventairePane.getChildren().get(i),true,m);
+            }
+        });
+        reserve.setOnMouseMoved(e ->{
+            for (int i=0; i<reserve.getChildren().size();i++){
+                dragAndDrop(reserve.getChildren().get(i),false,m);
+            }
+        });
     }
 
-    /*-------------
-    E: String id
-    //ajoute l'ImageView de l'item id dans l'invataire
+    /* -----------------
+    E: Plan p
+    // Supprime tout les items de la matrice et du Plan
     S:
      */
-    public void addItemInventaire(String id){
-        ImageView iv = new ImageView("resources/images/items/"+id+".png");
-        iv.setId(id);
-        inventairePane.getChildren().add(iv);
-        resultatPane.getChildren().remove(0);
-        //dragAndDrop(iv,true,);
+    public void deleteItemsTab(Plan p){
+        Pane[] tabPane = {row0col0, row0col1, row0col2, row1col0, row1col1, row1col2, row2col0, row2col1, row2col2};
+        for (Pane pane : tabPane) {
+            if(pane.getChildren().size()>0){
+                Integer[]pos=position(pane.getId());
+                p.modifierPlan(pos[0],pos[1]);
+                pane.getChildren().remove(0);
+            }
+        }
+    }
+    /* ---------
+    E: Pane box(1 case de la matrice), Modele m
+    //Supprime l'item de box et de m.planEnCours
+    //craft(m)
+    S:
+     */
+    public void deleteItemTab(Pane box,Modele m){
+        if (box.getChildren().size() > 0)
+        {
+            String id = box.getChildren().get(0).getId();
+            // Si l'item provien de l'inventaire
+            if(id.contains("//")){
+                String[] id2 = id.split("//");
+                addItemInventaire(id2[0],false,m.inventaire,m.resultatCraft);
+            }
+            box.getChildren().remove(0);
+            Integer[] pos = position(box.getId());
+            m.planEnCours.modifierPlan(pos[0],pos[1]);
+            crafte(m);
+        }
+    }
+    /* ----------
+    E: String id, Boolean (vrai si c'est un nouveaux item), Inventaire inv, Item res(resultat Craft)
+    //ajoute l'Item id/res à l'inventaire
+    S:
+     */
+    public void addItemInventaire(String id, Boolean nouveau, Inventaire inv, Item res){
+        if (nouveau) {
+            resultatPane.getChildren().remove(0);
+            inv.ajouter(res.nom,res.nbFabrique);
+            for(int i=0; i<res.nbFabrique;i++){
+                ImageView iv = new ImageView("resource/images/items/"+id+".png");
+                iv.setId(id);
+                iv.setFitWidth(50);iv.setFitHeight(50);
+                inventairePane.getChildren().add(iv);
+            }
+        }
+        else{
+            inv.ajouter(id,1);
+            ImageView iv = new ImageView("resource/images/items/"+id+".png");
+            iv.setId(id);
+            iv.setFitWidth(50);iv.setFitHeight(50);
+            inventairePane.getChildren().add(iv);
+        }
     }
 
     /*----------
@@ -126,82 +184,112 @@ public class MainController {
                 iv.setFitWidth(50);iv.setFitHeight(50);
                 iv.setId(cle);
                 reserve.getChildren().add(iv);
-                dragAndDrop(iv,false,modele.planEnCours);
             }
         }
     }
+
     /*----
-    //E: ImageView iv, Boolean b
-    // drag and drop iv sur la table de craft
-    // si b, supprime iv de la liste
+    //E: Node node, Boolean b(vrai si viens de l'inventaire), Modele m
+    // drag and drop sur la matrice
+    // si b, supprime l'item de l'inventaire et ajoute "//" à l'id
     //S:
     -------*/
-    public void dragAndDrop(ImageView iv,Boolean b, Plan plan){
+    public void dragAndDrop(Node node,Boolean b,Modele m){
         Pane[] tabPane = {row0col0,row0col1,row0col2,row1col0,row1col1,row1col2,row2col0,row2col1,row2col2};
-        iv.setOnDragDetected((MouseEvent e)->{
-            id = iv.getId();
-            Dragboard db = iv.startDragAndDrop(TransferMode.COPY);
+
+        node.setOnDragDetected((MouseEvent e)->{
+            id = node.getId();
+            image = new Image("resource/images/items/"+id+".png");
+
+            Dragboard db = node.startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
-            content.putImage(iv.getImage());
+            content.putImage(image);
             db.setContent(content);
             e.consume();
         });
 
-        for (Pane pane : tabPane) {
-            pane.setOnDragOver((DragEvent e) -> {
+        for (Pane p : tabPane) {
+            p.setOnDragOver((DragEvent e) -> {
                 e.acceptTransferModes(TransferMode.COPY);
                 e.consume();
             });
 
-            pane.setOnDragDropped((e) -> {
+            p.setOnDragDropped((e) -> {
                 Dragboard db = e.getDragboard();
                 boolean sucess = false;
                 if (db.hasImage()) {
-                    ImageView img = new ImageView(db.getImage());
-                    img.setFitHeight(50);img.setFitWidth(50);
-                    img.setId(id);
-                    if(pane.getChildren().size()>0){
-                        pane.getChildren().remove(0);
+                    ImageView iv = new ImageView(image);
+                    iv.setFitHeight(50);iv.setFitWidth(50);
+                    iv.setId(id);
+
+                    if(p.getChildren().size()>0){
+                        deleteItemTab(p,m);
                     }
-                    pane.getChildren().add(img);
+                    p.getChildren().add(iv);
                     sucess = true;
 
                     //Ajout de l'objet dans plans en cours
-                    String[] tab = pane.getId().split("row");
-                    String[] position = tab[1].split("col");
-                    plan.modifierPlan(Integer.parseInt(position[0]),Integer.parseInt(position[1]),img.getId());
+                    Integer[] pos=position(p.getId());
+                    m.planEnCours.modifierPlan(pos[0],pos[1],iv.getId());
+                    crafte(m);
+                    if(b){
+                        iv.setId(id+"//");
+                    }
                 }
                 e.setDropCompleted(sucess);
                 e.consume();
             });
         }
         if (b){
-            iv.setOnDragDone(e ->{
+            node.setOnDragDone(e ->{
                 if (e.getTransferMode() == TransferMode.COPY){
-                    iv.setImage(null);
+                    node.setId(null);
+                    deleteIV();
+                    m.inventaire.retirer(id);
                 }
                 e.consume();
             });
         }
     }
-
     /* --------------
-    E: TablePlans plans, Plan planEncours
-    //Recupère les items présent dans tabPane
-    //Crée un Plan
-    //Affiche l'item correspondant au Plan si existe
+    E: Model m
+    //Recherche une correspondance des plans
+    //Affiche l'item crafter
     S:
      */
-    public void crafte(TablePlans plans, Plan planEncours) {
-        Item res = plans.chercher(planEncours);
-        System.out.println(planEncours+" --> "+res);
+    public void crafte(Modele m) {
+        Item res = m.plans.chercher(m.planEnCours);
+        m.setResultatCraft(res);
+
         if (resultatPane.getChildren().size()>0){
-            addItemInventaire(resultatPane.getChildren().get(0).getId());
+            resultatPane.getChildren().remove(0);
         }
         if (res!=null){
             ImageView iv = new ImageView("resource/images/items/"+res.nom+".png");
             iv.setId(res.nom);
             resultatPane.getChildren().add(iv);
+        }
+    }
+    /* --------------
+    E: String id (du panneau de la matrice)
+    S: Integer[lig,col]
+     */
+    public Integer[] position(String id){
+        String[] tab = id.split("row");
+        String[] position = tab[1].split("col");
+        Integer[] x= {Integer.parseInt(position[0]),Integer.parseInt(position[1])};
+        return x;
+    }
+    /* ----------
+    E:
+    //Supprime les ImageView avec un id null de l'inventaire
+    S:
+     */
+    public void deleteIV(){
+        for (int i=0;i<inventairePane.getChildren().size();i++){
+            if(inventairePane.getChildren().get(i).getId() == null){
+                inventairePane.getChildren().remove(i);
+            }
         }
     }
 }

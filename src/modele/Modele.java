@@ -21,6 +21,7 @@ public class Modele {
 	public Plan planEnCours; //plan en cours sur la table de craft
 	public Inventaire inventaire; //inventaire des objets détenus par l'utilisateur (par nom et quantité)
 	public TableItems reserve; //liste de tous les items disponibles (fabricables et non fabricables) rangés par nom
+
 	public Item resultatCraft; //Item résultant du plan actuellement sur la table (null si le plan ne correspond à rien)
 
 	File fichierInv = new File("inventaire.dat");
@@ -103,10 +104,17 @@ public class Modele {
 			throw new RuntimeException("Impossible d'écrire les données");
 		}
 	}
-	
+
 	// supprime la sauvegarde existante
 	public void resetSauvegarde() {
 		this.fichierInv.delete();
 		this.fichierTab.delete();
+	}
+
+	public Item getResultatCraft() {
+		return resultatCraft;
+	}
+	public void setResultatCraft(Item resultatCraft) {
+		this.resultatCraft = resultatCraft;
 	}
 }

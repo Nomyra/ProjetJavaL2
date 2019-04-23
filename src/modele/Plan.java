@@ -50,4 +50,7 @@ public class Plan implements Serializable{
 	public void modifierPlan(int i, int j) {
 		this.plan[i][j] = " ";
 	}
+	public String[][] getPlan(){
+		return this.plan;
+	}
 }

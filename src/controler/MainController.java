@@ -1,7 +1,5 @@
 package controler;
 
-import com.sun.webkit.Timer;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -46,13 +44,15 @@ public class MainController {
     private String id;
     private Image image;
 
-
     public MainController(){}
 
     @FXML
     private void initialize() {
         Modele m = new Modele();
         reserve(m);
+        showIventaire(m.inventaire,m.nom);
+        showTable(m.planEnCours);
+        crafte(m);
 
         // click table craft -> suprime l'item
         row2col2.setOnMouseClicked(e-> deleteItemTab(row2col2,m));
@@ -87,7 +87,40 @@ public class MainController {
             }
         });
     }
-
+    /* -------------
+    E: Inventaire, ArrayList<String> keys (liste des obj)
+    // Affiche l'inventaire si enregistré
+    S:
+     */
+    public void showIventaire(Inventaire inventaire,ArrayList<String> keys){
+        if (inventaire.size()>0){
+            for(String key: keys){
+                if (inventaire.get(key) != null){
+                    for (int i=0; i<inventaire.get(key);i++){
+                        ImageView iv = newIV(key);
+                        inventairePane.getChildren().add(iv);
+                    }
+                }
+            }
+        }
+    }
+    /* --------------
+    E: Plan p
+    //Affiche les items de la table de craft si enregistré
+    S:
+     */
+    public void showTable(Plan p){
+        Pane[][] tabPane = {{row0col0,row0col1,row0col2},{row1col0,row1col1,row1col2},{row2col0,row2col1,row2col2}};
+        for (int i=0;i<p.getPlan().length;i++){
+            for (int j=0;j<p.getPlan().length;j++){
+                String item = p.getPlan()[i][j];
+                if (!item.equals(" ")){
+                    ImageView iv = newIV(item);
+                    tabPane[i][j].getChildren().add(iv);
+                }
+            }
+        }
+    }
     /* -----------------
     E: Plan p
     // Supprime tout les items de la matrice et du Plan
@@ -134,21 +167,16 @@ public class MainController {
             resultatPane.getChildren().remove(0);
             inv.ajouter(res.nom,res.nbFabrique);
             for(int i=0; i<res.nbFabrique;i++){
-                ImageView iv = new ImageView("resource/images/items/"+id+".png");
-                iv.setId(id);
-                iv.setFitWidth(50);iv.setFitHeight(50);
+                ImageView iv = newIV(id);
                 inventairePane.getChildren().add(iv);
             }
         }
         else{
             inv.ajouter(id,1);
-            ImageView iv = new ImageView("resource/images/items/"+id+".png");
-            iv.setId(id);
-            iv.setFitWidth(50);iv.setFitHeight(50);
+            ImageView iv = newIV(id);
             inventairePane.getChildren().add(iv);
         }
     }
-
     /*----------
     E: Modele modele
     // Affiche les onglets catégorie de la reserve
@@ -166,7 +194,6 @@ public class MainController {
             button.setOnAction(e -> afficheItemReserve(labelCategorie, modele));
         }
     }
-
     /*-----------
     E: String c, Modele modele
     //Affiche les items de modele.reserve de la catégorie c dans #reserve
@@ -187,7 +214,6 @@ public class MainController {
             }
         }
     }
-
     /*----
     //E: Node node, Boolean b(vrai si viens de l'inventaire), Modele m
     // drag and drop sur la matrice
@@ -291,5 +317,16 @@ public class MainController {
                 inventairePane.getChildren().remove(i);
             }
         }
+    }
+    /* ---------
+    E: String s (identifiant de l'item)
+    //Cré et initialise une ImageView
+    S: ImageView iv
+     */
+    public ImageView newIV(String s){
+        ImageView iv = new ImageView("resource/images/items/"+s+".png");
+        iv.setId(s);
+        iv.setFitWidth(50);iv.setFitHeight(50);
+        return iv;
     }
 }

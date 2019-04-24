@@ -1,11 +1,29 @@
 @import url("https://fonts.googleapis.com/css?family=Pacifico");
-.button#crafter {
-    -fx-background-color: red;
-    -fx-text-fill: white;
-}
+
 #gridCraft{-fx-background-color: white;}
+
 #reserve,#inventairePane{-fx-background-color: #B2DCD7;}
+
 #b_categorie{-fx-border-style: none;}
+
 Label.hinventaire{
    -fx-font: bold 25px Pacifico;
+}
+#paneHome Button:hover{
+    -fx-border-style: dashed;
+    -fx-border-color: green;
+    -fx-text-fill: green;
+}
+#paneHome, #paneHome Button{
+    -fx-background-color: black;
+}
+#paneHome Button{
+    -fx-text-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 5;
+    -fx-pref-width: 290;
+    -fx-pref-height: 75;
+}
+ScrollPane AnchorPane{
+    -fx-background-color: #B2DCD7;
 }

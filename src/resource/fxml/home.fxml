@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="paneHome" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.HomeControler">
+   <children>
+      <BorderPane accessibleRole="BUTTON" minHeight="-Infinity" minWidth="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="h1" alignment="TOP_CENTER" contentDisplay="CENTER" text="TableCraft">
+                     <VBox.margin>
+                        <Insets bottom="90.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button fx:id="reprendre" mnemonicParsing="false" text="Reprendre la partie">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="normal" mnemonicParsing="false" text="Mode normal">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <VBox.margin>
+                        <Insets bottom="50.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="creatif" mnemonicParsing="false" text="Mode creatif">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+   <padding>
+      <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+   </padding>
+</AnchorPane>

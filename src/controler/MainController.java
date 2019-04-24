@@ -40,19 +40,25 @@ public class MainController {
     private FlowPane inventairePane;
     @FXML
     private Button enregistrer;
+    @FXML
+    private Label nbItem;
 
     private String id;
     private Image image;
 
     public MainController(){}
 
-    @FXML
-    private void initialize() {
-        Modele m = new Modele();
+    public void deleteSauvgarde(Modele m){
+        System.out.println("reset");
+        m.resetSauvegarde();
+    }
+    public void initialize(Modele m) {
         reserve(m);
         showIventaire(m.inventaire,m.nom);
-        showTable(m.planEnCours);
-        crafte(m);
+        Boolean table = showTable(m.planEnCours);
+        if(table){
+            crafte(m);
+        }
 
         // click table craft -> suprime l'item
         row2col2.setOnMouseClicked(e-> deleteItemTab(row2col2,m));
@@ -107,9 +113,10 @@ public class MainController {
     /* --------------
     E: Plan p
     //Affiche les items de la table de craft si enregistré
-    S:
+    S: Boolean s vrai si contient un item
      */
-    public void showTable(Plan p){
+    public Boolean showTable(Plan p){
+        Boolean s = false;
         Pane[][] tabPane = {{row0col0,row0col1,row0col2},{row1col0,row1col1,row1col2},{row2col0,row2col1,row2col2}};
         for (int i=0;i<p.getPlan().length;i++){
             for (int j=0;j<p.getPlan().length;j++){
@@ -117,9 +124,11 @@ public class MainController {
                 if (!item.equals(" ")){
                     ImageView iv = newIV(item);
                     tabPane[i][j].getChildren().add(iv);
+                    s=true;
                 }
             }
         }
+        return s;
     }
     /* -----------------
     E: Plan p
@@ -294,6 +303,11 @@ public class MainController {
             ImageView iv = new ImageView("resource/images/items/"+res.nom+".png");
             iv.setId(res.nom);
             resultatPane.getChildren().add(iv);
+            if(res.nbFabrique>1){
+                System.out.println(String.valueOf(res.nbFabrique));
+                nbItem.setText(String.valueOf(res.nbFabrique));
+                System.out.println(nbItem.getText());
+            }
         }
     }
     /* --------------

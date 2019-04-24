@@ -1,22 +1,26 @@
 
+import controler.JeuxManager;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        AnchorPane root = FXMLLoader.load(getClass().getResource("resource/fxml/index.fxml"));
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(new StackPane());
 
-        primaryStage.setTitle("Table de craft");
+        JeuxManager jeuxManager = new JeuxManager(scene);
+        jeuxManager.showHomeView();
+
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setMinWidth(500);
+        primaryStage.setMinHeight(700);
         primaryStage.show();
     }
+
+
 
     public static void main(String[] args) {
         launch(args);

@@ -160,3 +160,7 @@ clock; ,gold_ingot, /gold_ingot,redstone,gold_ingot/ ,gold_ingot, ;1;REDSTONE
 Pomme_doree_enchantee;Bloc_or,Bloc_or,Bloc_or/Bloc_or,apple,Bloc_or/Bloc_or,Bloc_or,Bloc_or;1;NOURRITURE
 Obsidienne;MATIERES_PREMIERES
 Table_enchantement; ,book, /diamond,Obsidienne,diamond/Obsidienne,Obsidienne,Obsidienne;1;REDSTONE
+eau;MATIERES_PREMIERES
+verre;MATIERES_PREMIERES
+sushi;MATIERES_PREMIERES
+sauvez_sushi; ,sushi, /verre,eau,verre/ ,verre, ;1;REDSTONE

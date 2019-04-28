@@ -21,19 +21,23 @@ public class JeuxManager {
         HomeControler controller = loader.getController();
         controller.initManager(this);
     }
-
-    public void showMainView() throws IOException {
+    public void showReprendreView() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
+        scene.setRoot(loader.load());
+        MainController controller = loader.getController();
+        controller.initialize(this.modele,"reprendre",this);
+    }
+    public void showCreatifView() throws IOException {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
             scene.setRoot(loader.load());
             MainController controller = loader.getController();
-            controller.initialize(this.modele);
+            controller.initialize(this.modele,"creatif",this);
     }
-
     public void showNormalGame() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
         scene.setRoot(loader.load());
         MainController controller = loader.getController();
-        controller.deleteSauvgarde(this.modele);
-        controller.initialize(this.modele);
+       // controller.deleteSauvgarde(this.modele);
+        controller.initialize(this.modele,"normal",this);
     }
 }

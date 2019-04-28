@@ -4,6 +4,8 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -16,93 +18,82 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane styleClass="body" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
+<AnchorPane stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controler.MainController">
     <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-              <BorderPane minHeight="224.0" minWidth="784.0" prefWidth="842.0" BorderPane.alignment="CENTER">
-                  <left>
-                      <GridPane fx:id="gridCraft" alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="230.0" BorderPane.alignment="CENTER">
-                          <columnConstraints>
-                              <ColumnConstraints fx:id="col1" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints fx:id="col2" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              <ColumnConstraints fx:id="col3" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints fx:id="row1" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints fx:id="row2" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              <RowConstraints fx:id="row3" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                          <children>
-                              <Pane fx:id="row0col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                              <Pane fx:id="row0col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-                              <Pane fx:id="row0col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                              <Pane fx:id="row1col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                              <Pane fx:id="row1col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Pane fx:id="row1col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Pane fx:id="row2col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                              <Pane fx:id="row2col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Pane fx:id="row2col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                          </children>
-                      </GridPane>
-                  </left>
-                  <top>
-                      <Button fx:id="enregistrer" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Enregistrer" BorderPane.alignment="TOP_RIGHT">
-                          <cursor>
-                              <Cursor fx:constant="HAND" />
-                          </cursor>
-                      </Button>
-                  </top>
-                  <center>
-                      <Pane fx:id="resultatPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0" BorderPane.alignment="CENTER_LEFT">
-                     <BorderPane.margin>
-                        <Insets left="100.0" />
-                     </BorderPane.margin>
-                        <Label fx:id="nbItem" layoutX="36.0" text="0" textAlignment="RIGHT" textFill="RED">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <GridPane fx:id="gridCraft" alignment="CENTER" gridLinesVisible="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="230.0">
+                            <columnConstraints>
+                                <ColumnConstraints fx:id="col1" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints fx:id="col2" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints fx:id="col3" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints fx:id="row1" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints fx:id="row2" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints fx:id="row3" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <children>
+                                <Pane fx:id="row0col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Pane fx:id="row0col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                                <Pane fx:id="row0col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+                                <Pane fx:id="row1col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <Pane fx:id="row1col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                <Pane fx:id="row1col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                <Pane fx:id="row2col0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <Pane fx:id="row2col1" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                <Pane fx:id="row2col2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                            </children>
+                        </GridPane>
+                        <Pane fx:id="resultatPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="50.0">
+                            <HBox.margin>
+                                <Insets left="100.0" top="90.0" />
+                            </HBox.margin>
+                        </Pane>
+                        <Label fx:id="nbItem" textAlignment="RIGHT" textFill="RED">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets top="71.0" />
+                            </HBox.margin>
                         </Label>
-                  </Pane>
-                  </center>
-               <BorderPane.margin>
-                  <Insets bottom="50.0" />
-               </BorderPane.margin>
-              </BorderPane>
-         </top>
-         <center>
-              <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-                  <children>
-                      <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0" styleClass="hinventaire" text="Inventaire" />
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                                  <FlowPane fx:id="inventairePane" minHeight="200" minWidth="842" />
-                           </children></AnchorPane>
-                    </content>
-                  </ScrollPane>
-                  </children>
-               <BorderPane.margin>
-                  <Insets bottom="40.0" />
-               </BorderPane.margin>
-              </VBox>
-         </center>
-         <bottom>
-              <VBox fx:id="vboxreserve" alignment="CENTER" BorderPane.alignment="CENTER">
-                  <children>
-                      <HBox fx:id="hbCategorie" alignment="CENTER" minHeight="40.0" minWidth="835.0">
-                          <cursor>
-                              <Cursor fx:constant="HAND" />
-                          </cursor>
-                  </HBox>
-                      <FlowPane fx:id="reserve" minHeight="200" minWidth="842" />
-                  </children>
-              </VBox>
-         </bottom>
-      </BorderPane>
+                        <Button fx:id="enregistrer" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Enregistrer" BorderPane.alignment="TOP_RIGHT">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                        <Button fx:id="menu" mnemonicParsing="false" text="Menu" />
+                    </children>
+                    <BorderPane.margin>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                    </BorderPane.margin>
+                </HBox>
+            </top>
+            <center>
+                <VBox fx:id="vboxVariable" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="45.0" styleClass="hinventaire" text="Inventaire" />
+                        <ScrollPane minHeight="200" minWidth="842" prefHeight="200.0">
+                            <FlowPane fx:id="inventairePane" minHeight="200" minWidth="842" />
+                        </ScrollPane>
+                    </children>
+                </VBox>
+            </center>
+            <left>
+                <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label text="Aide" />
+                        <MenuButton mnemonicParsing="false" text="MenuButton">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                            </items>
+                        </MenuButton>
+                    </children>
+                </VBox>
+            </left></BorderPane>
     </children>
-   <padding>
-      <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-   </padding>
 </AnchorPane>

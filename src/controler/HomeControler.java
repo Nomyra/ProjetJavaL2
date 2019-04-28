@@ -8,7 +8,6 @@ import javafx.scene.text.Font;
 
 import java.io.IOException;
 
-
 public class HomeControler {
     @FXML
     private Button reprendre;
@@ -31,12 +30,11 @@ public class HomeControler {
 
         reprendre.setOnAction(e->{
             try {
-                jeuxManager.showMainView();
+                jeuxManager.showReprendreView();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });
-
         normal.setOnAction(e->{
             try {
                 jeuxManager.showNormalGame();
@@ -44,6 +42,12 @@ public class HomeControler {
                 e1.printStackTrace();
             }
         });
+        creatif.setOnAction(e->{
+            try {
+                jeuxManager.showCreatifView();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
-
 }

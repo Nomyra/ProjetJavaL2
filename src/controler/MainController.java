@@ -1,5 +1,6 @@
 package controler;
 
+import com.sun.webkit.Timer;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -9,13 +10,10 @@ import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import modele.*;
 
+import java.io.IOException;
 import java.util.*;
 
 public class MainController {
-    @FXML
-    private FlowPane reserve;
-    @FXML
-    private HBox hbCategorie;
     @FXML
     private Pane row0col0;
     @FXML
@@ -41,7 +39,11 @@ public class MainController {
     @FXML
     private Button enregistrer;
     @FXML
+    private Button menu;
+    @FXML
     private Label nbItem;
+    @FXML
+    private VBox vboxVariable;
 
     private String id;
     private Image image;
@@ -52,13 +54,30 @@ public class MainController {
         System.out.println("reset");
         m.resetSauvegarde();
     }
-    public void initialize(Modele m) {
-        reserve(m);
-        showIventaire(m.inventaire,m.nom);
-        Boolean table = showTable(m.planEnCours);
-        if(table){
-            crafte(m);
+    public void initialize(Modele m,String mode,final JeuxManager jeuxManager) throws IOException {
+        menu.setOnAction(e->{
+            try {
+                jeuxManager.showHomeView();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        });
+        switch (mode){
+            case "creatif":
+                showReseveBox(m);
+                break;
+            case "reprendre":
+                showIventaire(m.inventaire,m.nom);
+                Boolean table = showTable(m.planEnCours);
+                if(table){
+                    crafte(m);
+                }
+                break;
+            case "normal":
+                showMatierePrem(m);
+                break;
         }
+
 
         // click table craft -> suprime l'item
         row2col2.setOnMouseClicked(e-> deleteItemTab(row2col2,m));
@@ -76,6 +95,7 @@ public class MainController {
             if (resultatPane.getChildren().size() > 0){
                 addItemInventaire(resultatPane.getChildren().get(0).getId(),true,m.inventaire,m.resultatCraft);
                 deleteItemsTab(m.planEnCours);
+                nbItem.setText(null);
             }
         });
 
@@ -87,9 +107,24 @@ public class MainController {
                 dragAndDrop(inventairePane.getChildren().get(i),true,m);
             }
         });
-        reserve.setOnMouseMoved(e ->{
-            for (int i=0; i<reserve.getChildren().size();i++){
-                dragAndDrop(reserve.getChildren().get(i),false,m);
+
+    }
+
+    public void showReseveBox(Modele m) throws IOException {
+        ReserveBox reserveBox = new ReserveBox(m);
+        vboxVariable.getChildren().add(reserveBox);
+        reserveBox.reservePane.setOnMouseMoved(e ->{
+            for (int i=0; i<reserveBox.reservePane.getChildren().size();i++){
+                dragAndDrop(reserveBox.reservePane.getChildren().get(i),false,m);
+            }
+        });
+    }
+    public void showMatierePrem(Modele m) throws IOException {
+        MatierePremControler matierePremControler = new MatierePremControler(m);
+        vboxVariable.getChildren().add(matierePremControler);
+        matierePremControler.matierePrem.setOnMouseMoved(e->{
+            for (int i=0; i<matierePremControler.matierePrem.getChildren().size();i++ ){
+                dragAndDrop(matierePremControler.matierePrem.getChildren().get(i),false,m);
             }
         });
     }
@@ -184,43 +219,6 @@ public class MainController {
             inv.ajouter(id,1);
             ImageView iv = newIV(id);
             inventairePane.getChildren().add(iv);
-        }
-    }
-    /*----------
-    E: Modele modele
-    // Affiche les onglets catégorie de la reserve
-    S:
-     */
-    public void reserve(Modele modele){
-        for (int i=0; i<modele.categories.size(); i++){
-            String labelCategorie = modele.categories.get(i);
-            Button button = new Button();
-            ImageView iv = new ImageView("resource/images/categories/"+labelCategorie+".png");
-            iv.setFitWidth(20);iv.setFitHeight(20);
-            button.setId("b_categorie");
-            button.setGraphic(iv);
-            hbCategorie.getChildren().add(button);
-            button.setOnAction(e -> afficheItemReserve(labelCategorie, modele));
-        }
-    }
-    /*-----------
-    E: String c, Modele modele
-    //Affiche les items de modele.reserve de la catégorie c dans #reserve
-    S:
-     */
-    public void afficheItemReserve(String c, Modele modele) {
-        reserve.getChildren().removeAll(reserve.getChildren());
-
-        for (int x = 0; x < modele.nom.size(); x++) {
-            String cle = modele.nom.get(x);
-            Item item = modele.reserve.get(cle);
-            //Ajoute les items à la réserve
-            if (Objects.equals(item.categorie,c)) {
-                ImageView iv = new ImageView("resource/images/items/"+cle+".png");
-                iv.setFitWidth(50);iv.setFitHeight(50);
-                iv.setId(cle);
-                reserve.getChildren().add(iv);
-            }
         }
     }
     /*----

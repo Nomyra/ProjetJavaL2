@@ -26,6 +26,7 @@ public class Modele {
 
 	File fichierInv = new File("inventaire.dat");
 	File fichierTab = new File("table.dat");
+	File fichierMode = new File("mode.dat");
 	
 	public Modele() {
 		try {
@@ -41,6 +42,10 @@ public class Modele {
 			fis = new FileInputStream(this.fichierTab);
 			ois = new ObjectInputStream(fis);
 			this.planEnCours = (Plan)ois.readObject();
+			
+			fis = new FileInputStream(this.fichierMode);
+			ois = new ObjectInputStream(fis);
+			this.modeCreatif = (boolean)ois.readObject();
 			
 			ois.close();
 			fis.close();
@@ -94,10 +99,14 @@ public class Modele {
 			FileOutputStream fos = new FileOutputStream(this.fichierInv);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.inventaire);
-			
+
 			fos = new FileOutputStream(this.fichierTab);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.planEnCours);
+
+			fos = new FileOutputStream(this.fichierMode);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(this.modeCreatif);
 			
 			oos.close();
 			fos.close();
@@ -110,6 +119,7 @@ public class Modele {
 	public void resetSauvegarde() {
 		this.fichierInv.delete();
 		this.fichierTab.delete();
+		this.fichierMode.delete();
 	}
 
 	public Item getResultatCraft() {

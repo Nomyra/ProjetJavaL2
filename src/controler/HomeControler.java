@@ -1,7 +1,6 @@
 package controler;
 
 import javafx.fxml.FXML;
-
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
@@ -37,7 +36,7 @@ public class HomeControler {
         });
         normal.setOnAction(e->{
             try {
-                jeuxManager.showNormalGame();
+                jeuxManager.showNormalView();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }

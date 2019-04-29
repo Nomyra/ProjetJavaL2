@@ -11,7 +11,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Scene scene = new Scene(new StackPane());
 
-        JeuxManager jeuxManager = new JeuxManager(scene);
+        JeuxManager jeuxManager = new JeuxManager(scene,primaryStage);
         jeuxManager.showHomeView();
 
         primaryStage.setScene(scene);
@@ -19,9 +19,6 @@ public class Main extends Application {
         primaryStage.setMinHeight(930);
         primaryStage.show();
     }
-
-
-
     public static void main(String[] args) {
         launch(args);
     }

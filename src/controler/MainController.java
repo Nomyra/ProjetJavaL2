@@ -1,6 +1,5 @@
 package controler;
 
-import com.sun.webkit.Timer;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -41,20 +40,28 @@ public class MainController {
     @FXML
     private Button menu;
     @FXML
+    private MenuButton aidemenu;
+    @FXML
     private Label nbItem;
     @FXML
     private VBox vboxVariable;
+    @FXML
+    private FlowPane aidePane;
 
     private String id;
     private Image image;
 
-    public MainController(){}
+    private JeuxManager jeuxManager;
+
+    public MainController(){
+    }
 
     public void deleteSauvgarde(Modele m){
         System.out.println("reset");
         m.resetSauvegarde();
     }
-    public void initialize(Modele m,String mode,final JeuxManager jeuxManager) throws IOException {
+    public void initialize(Modele m,String mode,final JeuxManager jm)  throws IOException {
+        jeuxManager=jm;
         menu.setOnAction(e->{
             try {
                 jeuxManager.showHomeView();
@@ -108,9 +115,50 @@ public class MainController {
             }
         });
 
+        help(m.categories,m.nom,m.reserve);
+    }
+    private void help(ArrayList<String> cat, ArrayList<String> keys, TableItems items){
+        MenuItem rien = new MenuItem("---");
+        aidemenu.getItems().add(rien);
+        rien.setOnAction(e->{aidePane.getChildren().removeAll(aidePane.getChildren());});
+
+        for (String c: cat){
+            if(!c.equals("MATIERES_PREMIERES")){
+                MenuItem menuItem = new MenuItem(c);
+                aidemenu.getItems().add(menuItem);
+                menuItem.setOnAction(e->showHelpItems(keys,items,c));
+            }
+        }
+    }
+    private void showHelpItems(ArrayList<String> keys,TableItems items,String c){
+        aidePane.getChildren().removeAll(aidePane.getChildren());
+                    /*ScrollBar scrollBar = new ScrollBar();
+                    scrollBar.setOrientation(Orientation.VERTICAL);
+                    scrollBar.setMin(0);
+                    scrollBar.setMax(200);
+                    scrollBar.setUnitIncrement(10);
+                    scrollBar.setBlockIncrement(15);
+                    scrollBar.setValue(50);
+                    aidePane.getChildren().add(scrollBar);*/
+        for (String key : keys) {
+            Item item = items.get(key);
+            if (Objects.equals(item.categorie, c)) {
+                ImageView iv = newIV(key);
+                aidePane.getChildren().add(iv);
+                iv.setOnMouseClicked(evt -> {
+                    try {
+                        jeuxManager.showHelpPlanView(item.plan, item.nom);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                //scrollBar.setValue(iv);
+
+            }
+        }
     }
 
-    public void showReseveBox(Modele m) throws IOException {
+    private void showReseveBox(Modele m) throws IOException {
         ReserveBox reserveBox = new ReserveBox(m);
         vboxVariable.getChildren().add(reserveBox);
         reserveBox.reservePane.setOnMouseMoved(e ->{
@@ -119,7 +167,7 @@ public class MainController {
             }
         });
     }
-    public void showMatierePrem(Modele m) throws IOException {
+    private void showMatierePrem(Modele m) throws IOException {
         MatierePremControler matierePremControler = new MatierePremControler(m);
         vboxVariable.getChildren().add(matierePremControler);
         matierePremControler.matierePrem.setOnMouseMoved(e->{
@@ -133,7 +181,7 @@ public class MainController {
     // Affiche l'inventaire si enregistré
     S:
      */
-    public void showIventaire(Inventaire inventaire,ArrayList<String> keys){
+    private void showIventaire(Inventaire inventaire,ArrayList<String> keys){
         if (inventaire.size()>0){
             for(String key: keys){
                 if (inventaire.get(key) != null){
@@ -150,7 +198,7 @@ public class MainController {
     //Affiche les items de la table de craft si enregistré
     S: Boolean s vrai si contient un item
      */
-    public Boolean showTable(Plan p){
+    private Boolean showTable(Plan p){
         Boolean s = false;
         Pane[][] tabPane = {{row0col0,row0col1,row0col2},{row1col0,row1col1,row1col2},{row2col0,row2col1,row2col2}};
         for (int i=0;i<p.getPlan().length;i++){
@@ -170,7 +218,7 @@ public class MainController {
     // Supprime tout les items de la matrice et du Plan
     S:
      */
-    public void deleteItemsTab(Plan p){
+    private void deleteItemsTab(Plan p){
         Pane[] tabPane = {row0col0, row0col1, row0col2, row1col0, row1col1, row1col2, row2col0, row2col1, row2col2};
         for (Pane pane : tabPane) {
             if(pane.getChildren().size()>0){
@@ -186,7 +234,7 @@ public class MainController {
     //craft(m)
     S:
      */
-    public void deleteItemTab(Pane box,Modele m){
+    private void deleteItemTab(Pane box,Modele m){
         if (box.getChildren().size() > 0)
         {
             String id = box.getChildren().get(0).getId();
@@ -206,7 +254,7 @@ public class MainController {
     //ajoute l'Item id/res à l'inventaire
     S:
      */
-    public void addItemInventaire(String id, Boolean nouveau, Inventaire inv, Item res){
+    private void addItemInventaire(String id, Boolean nouveau, Inventaire inv, Item res){
         if (nouveau) {
             resultatPane.getChildren().remove(0);
             inv.ajouter(res.nom,res.nbFabrique);
@@ -227,7 +275,7 @@ public class MainController {
     // si b, supprime l'item de l'inventaire et ajoute "//" à l'id
     //S:
     -------*/
-    public void dragAndDrop(Node node,Boolean b,Modele m){
+    private void dragAndDrop(Node node,Boolean b,Modele m){
         Pane[] tabPane = {row0col0,row0col1,row0col2,row1col0,row1col1,row1col2,row2col0,row2col1,row2col2};
 
         node.setOnDragDetected((MouseEvent e)->{
@@ -290,7 +338,7 @@ public class MainController {
     //Affiche l'item crafter
     S:
      */
-    public void crafte(Modele m) {
+    private void crafte(Modele m) {
         Item res = m.plans.chercher(m.planEnCours);
         m.setResultatCraft(res);
 
@@ -312,7 +360,7 @@ public class MainController {
     E: String id (du panneau de la matrice)
     S: Integer[lig,col]
      */
-    public Integer[] position(String id){
+    private Integer[] position(String id){
         String[] tab = id.split("row");
         String[] position = tab[1].split("col");
         Integer[] x= {Integer.parseInt(position[0]),Integer.parseInt(position[1])};
@@ -323,7 +371,7 @@ public class MainController {
     //Supprime les ImageView avec un id null de l'inventaire
     S:
      */
-    public void deleteIV(){
+    private void deleteIV(){
         for (int i=0;i<inventairePane.getChildren().size();i++){
             if(inventairePane.getChildren().get(i).getId() == null){
                 inventairePane.getChildren().remove(i);
@@ -335,7 +383,7 @@ public class MainController {
     //Cré et initialise une ImageView
     S: ImageView iv
      */
-    public ImageView newIV(String s){
+    private ImageView newIV(String s){
         ImageView iv = new ImageView("resource/images/items/"+s+".png");
         iv.setId(s);
         iv.setFitWidth(50);iv.setFitHeight(50);

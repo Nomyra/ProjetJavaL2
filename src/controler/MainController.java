@@ -53,12 +53,14 @@ public class MainController {
 
     private JeuxManager jeuxManager;
 
+
     public MainController(){
     }
 
     public void deleteSauvgarde(Modele m){
         System.out.println("reset");
         m.resetSauvegarde();
+        //-------------- add remove m.inventaire content
     }
     public void initialize(Modele m,String mode,final JeuxManager jm)  throws IOException {
         jeuxManager=jm;
@@ -71,6 +73,7 @@ public class MainController {
         });
         switch (mode){
             case "creatif":
+                m.resetSauvegarde();
                 showReseveBox(m);
                 break;
             case "reprendre":
@@ -79,12 +82,18 @@ public class MainController {
                 if(table){
                     crafte(m);
                 }
+                if(m.modeCreatif){
+                    showReseveBox(m);
+                }
+                else {
+                    showMatierePrem(m);
+                }
                 break;
             case "normal":
+                m.resetSauvegarde();
                 showMatierePrem(m);
                 break;
         }
-
 
         // click table craft -> suprime l'item
         row2col2.setOnMouseClicked(e-> deleteItemTab(row2col2,m));
@@ -106,7 +115,7 @@ public class MainController {
             }
         });
 
-        enregistrer.setOnAction(e -> m.enregistrerEtat());
+//        enregistrer.setOnAction(e -> m.enregistrerEtat());
 
         // Drag and drop detecte
         inventairePane.setOnMouseMoved(e ->{
@@ -153,7 +162,6 @@ public class MainController {
                     }
                 });
                 //scrollBar.setValue(iv);
-
             }
         }
     }

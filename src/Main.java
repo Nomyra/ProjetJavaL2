@@ -6,18 +6,22 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
+    private JeuxManager jeuxManager;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Scene scene = new Scene(new StackPane());
 
-        JeuxManager jeuxManager = new JeuxManager(scene,primaryStage);
+        jeuxManager = new JeuxManager(scene,primaryStage);
         jeuxManager.showHomeView();
 
         primaryStage.setScene(scene);
         primaryStage.setMinWidth(943);
         primaryStage.setMinHeight(930);
         primaryStage.show();
+    }
+    @Override
+    public void stop(){
+        jeuxManager.exitProcess();
     }
     public static void main(String[] args) {
         launch(args);

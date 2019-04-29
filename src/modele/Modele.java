@@ -55,7 +55,6 @@ public class Modele {
 			this.planEnCours = new Plan(planVide);
 			this.resultatCraft = null;
 		}
-		this.modeCreatif = true;
 		this.resultatCraft = this.plans.chercher(this.planEnCours);
 	}
 	

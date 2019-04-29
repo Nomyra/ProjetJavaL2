@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
-
 import java.io.IOException;
+import java.util.Optional;
 
 public class HomeControler {
     @FXML
@@ -28,6 +28,7 @@ public class HomeControler {
         creatif.setFont(minecarftB);
 
         reprendre.setOnAction(e->{
+
             try {
                 jeuxManager.showReprendreView();
             } catch (IOException e1) {
@@ -35,17 +36,34 @@ public class HomeControler {
             }
         });
         normal.setOnAction(e->{
-            try {
-                jeuxManager.showNormalView();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Nouvelle partie");
+            alert.setHeaderText("Démarrer une nouvelle partie en mode normal ?");
+            alert.setContentText("Si vous continuez la partie en cours sera perdu.");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                try {
+                    jeuxManager.showNormalView();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
+
         });
         creatif.setOnAction(e->{
-            try {
-                jeuxManager.showCreatifView();
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Nouvelle partie");
+            alert.setHeaderText("Démarrer une nouvelle partie en mode créatif ?");
+            alert.setContentText("Si vous continuez la partie en cours sera perdu.");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                try {
+                    jeuxManager.showCreatifView();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }

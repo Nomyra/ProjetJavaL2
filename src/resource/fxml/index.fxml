@@ -59,11 +59,11 @@
                                 <Insets top="71.0" />
                             </HBox.margin>
                         </Label>
-                        <Button fx:id="enregistrer" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Enregistrer" BorderPane.alignment="TOP_RIGHT">
+                        <!--<Button fx:id="enregistrer" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Enregistrer" BorderPane.alignment="TOP_RIGHT">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
-                        </Button>
+                        </Button>-->
                         <Button fx:id="menu" mnemonicParsing="false" text="Menu" />
                     </children>
                     <BorderPane.margin>

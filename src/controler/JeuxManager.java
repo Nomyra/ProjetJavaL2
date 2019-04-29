@@ -1,6 +1,6 @@
 package controler;
-import java.io.IOException;
 
+import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.*;
 import javafx.scene.layout.StackPane;
@@ -36,13 +36,14 @@ public class JeuxManager {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
             scene.setRoot(loader.load());
             MainController controller = loader.getController();
+            modele.modeCreatif = true;
             controller.initialize(this.modele,"creatif",this);
     }
     public void showNormalView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
         scene.setRoot(loader.load());
         MainController controller = loader.getController();
-       // controller.deleteSauvgarde(this.modele);
+        modele.modeCreatif = false;
         controller.initialize(this.modele,"normal",this);
     }
     public void showHelpPlanView(Plan plan, String item) throws IOException {
@@ -66,5 +67,10 @@ public class JeuxManager {
         HelpPlanControler controller = loader.getController();
         controller.inithelp(plan);
         newWindow.show();
+    }
+
+    public void exitProcess(){
+        modele.enregistrerEtat();
+        System.out.println("cc");
     }
 }

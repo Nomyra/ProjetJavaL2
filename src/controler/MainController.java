@@ -57,23 +57,44 @@ public class MainController {
     public MainController(){
     }
 
+    /* -----------------
+    E: Modele m
+    // Remet à zero l'état du jeux
+    S:
+     */
     public void deleteSauvgarde(Modele m){
-        System.out.println("reset");
+        // supprime la sauvegarde
         m.resetSauvegarde();
-        //-------------- add remove m.inventaire content
+        // supprime les items de l'invantaire
+        m.inventaire.clear();
+        //supprime les items du plan en cours
+        String[][] plan = m.planEnCours.getPlan();
+        for (int i=0;i<plan.length;i++ ){
+            for (int j=0;j<plan.length;j++){
+                if(!plan[i][j].equals(" ")){
+                    m.planEnCours.modifierPlan(i,j);
+                }
+            }
+        }
     }
+
     public void initialize(Modele m,String mode,final JeuxManager jm)  throws IOException {
         jeuxManager=jm;
+
+        //affiche menu démarer et enregistre la partie
         menu.setOnAction(e->{
             try {
+                m.enregistrerEtat();
                 jeuxManager.showHomeView();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
         });
+
+        //Chargement des éléments selon le mode de jeux
         switch (mode){
             case "creatif":
-                m.resetSauvegarde();
+                deleteSauvgarde(m);
                 showReseveBox(m);
                 break;
             case "reprendre":
@@ -90,7 +111,7 @@ public class MainController {
                 }
                 break;
             case "normal":
-                m.resetSauvegarde();
+                deleteSauvgarde(m);
                 showMatierePrem(m);
                 break;
         }
@@ -115,8 +136,6 @@ public class MainController {
             }
         });
 
-//        enregistrer.setOnAction(e -> m.enregistrerEtat());
-
         // Drag and drop detecte
         inventairePane.setOnMouseMoved(e ->{
             for (int i=0; i<inventairePane.getChildren().size();i++){
@@ -126,6 +145,12 @@ public class MainController {
 
         help(m.categories,m.nom,m.reserve);
     }
+
+    /* -----------------
+    E: ArrayList<String> cat(catégorie), ArrayList<String> keys, TableItems items
+    // init les onglets(cat) de l'aide et evt click sur les onglets
+    S:
+     */
     private void help(ArrayList<String> cat, ArrayList<String> keys, TableItems items){
         MenuItem rien = new MenuItem("---");
         aidemenu.getItems().add(rien);
@@ -139,6 +164,11 @@ public class MainController {
             }
         }
     }
+    /* -----------------
+    E: ArrayList<String> keys,TableItems items,String c (categorie)
+    // Affiche les items de c et evt click sur l'item -> affiche la view d'aide
+    S:
+     */
     private void showHelpItems(ArrayList<String> keys,TableItems items,String c){
         aidePane.getChildren().removeAll(aidePane.getChildren());
                     /*ScrollBar scrollBar = new ScrollBar();
@@ -165,7 +195,11 @@ public class MainController {
             }
         }
     }
-
+    /* -----------------
+        E: Modele m
+        // Ajoute la view reserve au jeux
+        S:
+    */
     private void showReseveBox(Modele m) throws IOException {
         ReserveBox reserveBox = new ReserveBox(m);
         vboxVariable.getChildren().add(reserveBox);
@@ -175,6 +209,11 @@ public class MainController {
             }
         });
     }
+    /* -----------------
+        E: Modele m
+        // Ajoute la view des matières première
+        S:
+    */
     private void showMatierePrem(Modele m) throws IOException {
         MatierePremControler matierePremControler = new MatierePremControler(m);
         vboxVariable.getChildren().add(matierePremControler);
@@ -185,8 +224,8 @@ public class MainController {
         });
     }
     /* -------------
-    E: Inventaire, ArrayList<String> keys (liste des obj)
-    // Affiche l'inventaire si enregistré
+    E: Inventaire, ArrayList<String> keys (liste des cles)
+    // Affiche les items présent dans l'inventaire
     S:
      */
     private void showIventaire(Inventaire inventaire,ArrayList<String> keys){
@@ -203,7 +242,7 @@ public class MainController {
     }
     /* --------------
     E: Plan p
-    //Affiche les items de la table de craft si enregistré
+    //Affiche les items présent dans la table de craft
     S: Boolean s vrai si contient un item
      */
     private Boolean showTable(Plan p){
@@ -246,7 +285,7 @@ public class MainController {
         if (box.getChildren().size() > 0)
         {
             String id = box.getChildren().get(0).getId();
-            // Si l'item provien de l'inventaire
+            // Si l'item provient de l'inventaire
             if(id.contains("//")){
                 String[] id2 = id.split("//");
                 addItemInventaire(id2[0],false,m.inventaire,m.resultatCraft);

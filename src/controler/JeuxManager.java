@@ -71,6 +71,5 @@ public class JeuxManager {
 
     public void exitProcess(){
         modele.enregistrerEtat();
-        System.out.println("cc");
     }
 }

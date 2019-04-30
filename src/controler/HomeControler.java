@@ -27,6 +27,7 @@ public class HomeControler {
         normal.setFont(minecarftB);
         creatif.setFont(minecarftB);
 
+        //menu mode de jeux
         reprendre.setOnAction(e->{
 
             try {
@@ -35,6 +36,7 @@ public class HomeControler {
                 e1.printStackTrace();
             }
         });
+
         normal.setOnAction(e->{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Nouvelle partie");
@@ -51,6 +53,7 @@ public class HomeControler {
             }
 
         });
+
         creatif.setOnAction(e->{
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Nouvelle partie");

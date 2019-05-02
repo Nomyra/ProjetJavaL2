@@ -43,7 +43,7 @@ public class MatierePremControler extends VBox {
             String cle = modele.nom.get(x);
             Item item = modele.reserve.get(cle);
             //Ajoute les items à la réserve
-            if (item.categorie.equals("MATIERES_PREMIERES")) {
+            if (item.categorie.equals("MATIERES_PREMIERES") || !item.fabricable) {
                 ImageView iv = new ImageView("resource/images/items/"+cle+".png");
                 iv.setFitWidth(50);iv.setFitHeight(50);
                 iv.setId(cle);

@@ -181,11 +181,9 @@ public class MainController {
         rien.setOnAction(e->{aidePane.getChildren().removeAll(aidePane.getChildren());});
 
         for (String c: cat){
-            if(!c.equals("MATIERES_PREMIERES")){
-                MenuItem menuItem = new MenuItem(c);
-                aidemenu.getItems().add(menuItem);
-                menuItem.setOnAction(e->showHelpItems(keys,items,c));
-            }
+            MenuItem menuItem = new MenuItem(c);
+            aidemenu.getItems().add(menuItem);
+            menuItem.setOnAction(e->showHelpItems(keys,items,c));
         }
     }
     /* -----------------
@@ -197,7 +195,7 @@ public class MainController {
         aidePane.getChildren().removeAll(aidePane.getChildren());
         for (String key : keys) {
             Item item = items.get(key);
-            if (Objects.equals(item.categorie, c)) {
+            if (Objects.equals(item.categorie, c) && item.fabricable) {
                 ImageView iv = newIV(key);
                 aidePane.getChildren().add(iv);
                 iv.setOnMouseClicked(evt -> {

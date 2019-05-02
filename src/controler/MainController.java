@@ -15,6 +15,8 @@ import java.util.*;
 
 public class MainController {
     @FXML
+    private GridPane gridCraft;
+    @FXML
     private Pane row0col0;
     @FXML
     private Pane row0col1;
@@ -54,7 +56,8 @@ public class MainController {
 
     private String id;
     private Image image;
-
+    private Integer posXfin;
+    private Integer posYfin;
     private JeuxManager jeuxManager;
 
 
@@ -146,7 +149,16 @@ public class MainController {
                 dragAndDrop(inventairePane.getChildren().get(i),true,m);
             }
         });
-
+        //DaD sur la table de craft
+        gridCraft.setOnMouseMoved(e->{
+            Pane[] tabPane = {row0col0,row0col1,row0col2,row1col0,row1col1,row1col2,row2col0,row2col1,row2col2};
+            for (Pane pane : tabPane) {
+                if (pane.getChildren().size()==1){
+                  dragAndDropOnTable(pane,m,tabPane);
+                }
+            }
+        });
+        //init menu help
         help(m.categories,m.nom,m.reserve);
 
         //Font style
@@ -183,14 +195,6 @@ public class MainController {
      */
     private void showHelpItems(ArrayList<String> keys,TableItems items,String c){
         aidePane.getChildren().removeAll(aidePane.getChildren());
-                    /*ScrollBar scrollBar = new ScrollBar();
-                    scrollBar.setOrientation(Orientation.VERTICAL);
-                    scrollBar.setMin(0);
-                    scrollBar.setMax(200);
-                    scrollBar.setUnitIncrement(10);
-                    scrollBar.setBlockIncrement(15);
-                    scrollBar.setValue(50);
-                    aidePane.getChildren().add(scrollBar);*/
         for (String key : keys) {
             Item item = items.get(key);
             if (Objects.equals(item.categorie, c)) {
@@ -203,7 +207,6 @@ public class MainController {
                         e.printStackTrace();
                     }
                 });
-                //scrollBar.setValue(iv);
             }
         }
     }
@@ -390,6 +393,73 @@ public class MainController {
                 e.consume();
             });
         }
+    }
+    /* -------------
+    E: Pane pane (source), Modele m, Pane[] panes (listes des panes de la grille -> destinations)
+    // Drag and drop sur la table de craft -> modification du plan + craft
+    S:--
+     */
+    public void dragAndDropOnTable(Pane pane,Modele m,Pane[] panes){
+        Integer[] posDep=position(pane.getId());
+
+        pane.setOnDragDetected((MouseEvent e)->{
+            id = pane.getChildren().get(0).getId();
+            if(id.contains("//")){
+                String[] id2 = id.split("//");
+                image = new Image("resource/images/items/"+id2[0]+".png");
+            }
+            else{
+                image = new Image("resource/images/items/"+id+".png");
+            }
+            Dragboard db = pane.getChildren().get(0).startDragAndDrop(TransferMode.COPY);
+            ClipboardContent content = new ClipboardContent();
+            content.putImage(image);
+            db.setContent(content);
+            e.consume();
+        });
+
+        for (Pane p : panes) {
+            p.setOnDragOver((DragEvent e) -> {
+                if(p.getChildren().size()==0){
+                    e.acceptTransferModes(TransferMode.COPY);
+                    e.consume();
+                }
+            });
+
+            p.setOnDragDropped((e) -> {
+                Dragboard db = e.getDragboard();
+                boolean sucess = false;
+                if (db.hasImage()) {
+                    posXfin =position(p.getId())[0];
+                    posYfin =position(p.getId())[1];
+
+                    ImageView iv = new ImageView(image);
+                    iv.setFitHeight(50);iv.setFitWidth(50);
+                    iv.setId(id);
+
+                    p.getChildren().add(iv);
+                    iv.setId(id);
+                    sucess = true;
+                }
+                e.setDropCompleted(sucess);
+                e.consume();
+            });
+        }
+        pane.setOnDragDone(e ->{
+            if (e.getTransferMode() == TransferMode.COPY){
+                pane.getChildren().remove(0);
+                m.planEnCours.modifierPlan(posDep[0],posDep[1]);
+                if (id.contains("//")){
+                    String[] id2 = id.split("//");
+                    m.planEnCours.modifierPlan(posXfin,posYfin,id2[0]);
+                }
+                else{
+                    m.planEnCours.modifierPlan(posXfin,posYfin,id);
+                }
+                crafte(m);
+            }
+            e.consume();
+        });
     }
     /* --------------
     E: Model m

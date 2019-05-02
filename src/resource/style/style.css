@@ -1,7 +1,5 @@
-#gridCraft{-fx-border-color: green;}
-
 #reservePane,.inventaireSP,#matierePrem,#gridCraft,#inventairePane{
-    -fx-background-color: black;
+    -fx-background-color:rgb(24,24,24);
     -fx-effect: dropshadow(three-pass-box,  rgba(0,0,0,0.7), 10, -10, 0, 5);
 }
 

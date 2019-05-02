@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import modele.*;
 
 import java.io.IOException;
@@ -36,8 +37,6 @@ public class MainController {
     @FXML
     private FlowPane inventairePane;
     @FXML
-    private Button enregistrer;
-    @FXML
     private Button menu;
     @FXML
     private MenuButton aidemenu;
@@ -47,6 +46,11 @@ public class MainController {
     private VBox vboxVariable;
     @FXML
     private FlowPane aidePane;
+    @FXML
+    private Label hinventaire;
+    @FXML
+    private Label aideLabel;
+
 
     private String id;
     private Image image;
@@ -144,6 +148,14 @@ public class MainController {
         });
 
         help(m.categories,m.nom,m.reserve);
+
+        //Font style
+        Font minecarftB = Font.loadFont(getClass().getResourceAsStream("/resource/fonts/MINECRAFT-b.ttf"),20);
+        Font minecarftBpetit = Font.loadFont(getClass().getResourceAsStream("/resource/fonts/MINECRAFT-b.ttf"),15);
+        Font minecarftN = Font.loadFont(getClass().getResourceAsStream("/resource/fonts/Minecrafter.Alt.ttf"),25);
+        hinventaire.setFont(minecarftN);
+        aideLabel.setFont(minecarftB);
+        menu.setFont(minecarftB);
     }
 
     /* -----------------

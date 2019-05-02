@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.layout.*?>
+
 <?import javafx.scene.control.Label?>
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml">
-    <Label text="Matière premmière" />
-    <FlowPane fx:id="matierePrem" minHeight="200" minWidth="842" />
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1">
+    <Label fx:id="h1" text="Matiere premmiere"/>
+    <FlowPane fx:id="matierePrem" minHeight="200" minWidth="200" />
 </fx:root>

@@ -1,19 +1,17 @@
-@import url("https://fonts.googleapis.com/css?family=Pacifico");
+#gridCraft{-fx-border-color: green;}
 
-#gridCraft{-fx-background-color: white;}
-
-#reserve,#inventairePane{-fx-background-color: #B2DCD7;}
+#reservePane,.inventaireSP,#matierePrem,#gridCraft,#inventairePane{
+    -fx-background-color: black;
+    -fx-effect: dropshadow(three-pass-box,  rgba(0,0,0,0.7), 10, -10, 0, 5);
+}
 
 #b_categorie{-fx-border-style: none;}
 
-Label.hinventaire{
-   -fx-font: bold 25px Pacifico;
-}
-#paneHome Button:hover{
-    -fx-border-style: dashed;
-    -fx-border-color: green;
+Label#hinventaire,#h1{
     -fx-text-fill: green;
 }
+
+.body,Button#menu{-fx-background-color: rgb(32,32,32)}
 #paneHome, #paneHome Button{
     -fx-background-color: black;
 }
@@ -24,6 +22,23 @@ Label.hinventaire{
     -fx-pref-width: 290;
     -fx-pref-height: 75;
 }
-ScrollPane AnchorPane{
-    -fx-background-color: #B2DCD7;
+#paneHome Button:hover{
+    -fx-border-style: dashed;
+    -fx-border-color: green;
+    -fx-text-fill: green;
+}
+Button#menu{
+    -fx-text-fill: white;
+    -fx-pref-width: 100;
+    -fx-pref-height: 20;
+}
+Button#menu:hover{
+    -fx-text-fill: green;
+}
+#aideLabel{
+    -fx-text-fill: white;
+}
+.caseMatrice{
+    -fx-border-color: green;
+    -fx-padding: 30;
 }

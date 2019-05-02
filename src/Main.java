@@ -15,8 +15,8 @@ public class Main extends Application {
         jeuxManager.showHomeView();
 
         primaryStage.setScene(scene);
-        primaryStage.setMinWidth(943);
-        primaryStage.setMinHeight(930);
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(850);
         primaryStage.show();
     }
     @Override

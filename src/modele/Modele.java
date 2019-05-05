@@ -27,7 +27,7 @@ public class Modele {
 	File fichierInv = new File("inventaire.dat");
 	File fichierTab = new File("table.dat");
 	File fichierMode = new File("mode.dat");
-	
+
 	public Modele() {
 		try {
 			this.chargerItem();
@@ -38,15 +38,15 @@ public class Modele {
 			FileInputStream fis = new FileInputStream(this.fichierInv);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			this.inventaire = (Inventaire)ois.readObject();
-			
+
 			fis = new FileInputStream(this.fichierTab);
 			ois = new ObjectInputStream(fis);
 			this.planEnCours = (Plan)ois.readObject();
-			
+
 			fis = new FileInputStream(this.fichierMode);
 			ois = new ObjectInputStream(fis);
 			this.modeCreatif = (boolean)ois.readObject();
-			
+
 			ois.close();
 			fis.close();
 		} catch(IOException | ClassNotFoundException e) {
@@ -57,8 +57,8 @@ public class Modele {
 		}
 		this.resultatCraft = this.plans.chercher(this.planEnCours);
 	}
-	
-	
+
+
 	//pour charger tous les items au lancement de l'application
 	public void chargerItem() throws IOException {
 		this.categories = new ArrayList<String>();
@@ -73,14 +73,14 @@ public class Modele {
 		while ((m = br.readLine()) != null){
 			tab = m.split(";");
 			nom.add(tab[0]);
-			if (tab.length == 4) {
+			if (tab.length == 5) {
 				String[] sousTab = tab[1].split("/");
 				String[][] pl = {sousTab[0].split(","),sousTab[1].split(","),sousTab[2].split(",")};
 				Plan p1 = new Plan(pl);
-				it = new Item(p1, tab[0], tab[tab.length-1], Integer.parseInt(tab[tab.length-2]));
+				it = new Item(p1, tab[0], tab[3], Integer.parseInt(tab[2]), tab[4]);
 				this.plans.ajouter(it);
 			} else {
-				it = new Item(tab[0], tab[tab.length-1]);
+				it = new Item(tab[0], tab[1], tab[2]);
 			}
 			if (!(this.categories.contains(it.categorie))) {
 				this.categories.add(it.categorie);
@@ -106,7 +106,7 @@ public class Modele {
 			fos = new FileOutputStream(this.fichierMode);
 			oos = new ObjectOutputStream(fos);
 			oos.writeObject(this.modeCreatif);
-			
+
 			oos.close();
 			fos.close();
 		} catch(IOException e1) {

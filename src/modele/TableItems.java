@@ -20,7 +20,7 @@ public class TableItems extends Hashtable<String,Item> implements Serializable{
 		for (String n : this.keySet()) {
 			String temp = Normalizer.normalize(nom, Normalizer.Form.NFD);
 			nom = temp.replaceAll("[^\\p{ASCII}]", "").toUpperCase();
-			if (n.toUpperCase().contains(nom)) {
+			if (this.get(n).nomRecherche.toUpperCase().contains(nom)) {
 				liste.add(this.get(n));
 			}
 		}

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml">
 <HBox fx:id="hboxCategorie" alignment="CENTER" minHeight="40.0" minWidth="835.0">
     <cursor>
@@ -9,4 +12,5 @@
     <children></children>
 </HBox>
 <FlowPane fx:id="reservePane" minHeight="200" minWidth="842" />
+<TextField fx:id="searchField" prefWidth="100" HBox.hgrow="ALWAYS" promptText="Rechercher un objet"/>
 </fx:root>

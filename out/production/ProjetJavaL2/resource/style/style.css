@@ -2,7 +2,9 @@
     -fx-background-color:rgb(24,24,24);
     -fx-effect: dropshadow(three-pass-box,  rgba(0,0,0,0.7), 10, -10, 0, 5);
 }
-
+searchField#searchField{
+    -fx-effect: dropshadow(three-pass-box,  rgba(0,0,0,0.7), 10, -10, 0, 5);
+}
 #b_categorie{-fx-border-style: none;}
 
 Label#hinventaire,#h1{

@@ -36,8 +36,8 @@ dark_oak_door;Planches_de_chene,Planches_de_chene, /Planches_de_chene,Planches_d
 bed; , , /Laine_blanche,Laine_blanche,Laine_blanche/Planches_de_chene,Planches_de_chene,Planches_de_chene;1;BOIS;LIT
 bowl; , , /Planches_de_chene, ,Planches_de_chene/ ,Planches_de_chene, ;1;NOURRITURE;BOL
 Bouclier;Planches_de_chene,iron_ingot,Planches_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene/ ,Planches_de_chene, ;1;ARMES;BOUCLIER
-Tripwire_haak; ,iron_ingot, / ,stick, / ,Planches_de_chene, ;2;REDSTONE
-Barriere_en_bois_de_chene; , , /Planches_de_chene,stick,Planches_de_chene/Planches_de_chene,stick,Planches_de_chene;3;BOIS;CROCHET
+Tripwire_haak; ,iron_ingot, / ,stick, / ,Planches_de_chene, ;2;REDSTONE;CROCHET
+Barriere_en_bois_de_chene; , , /Planches_de_chene,stick,Planches_de_chene/Planches_de_chene,stick,Planches_de_chene;3;BOIS;BARRIERE EN BOIS
 Bouton_en_bois_de_chene; , , / ,Planches_de_chene, / , , ;1;REDSTONE;BOUTON EN BOIS
 Composteur;Barriere_en_bois_de_chene, ,Barriere_en_bois_de_chene/Barriere_en_bois_de_chene, ,Barriere_en_bois_de_chene/Planches_de_chene,Planches_de_chene,Planches_de_chene;1;BOIS;COMPOSTEUR
 Dalle_en_bois; , , / , , /Planches_de_chene,Planches_de_chene,Planches_de_chene;6;BOIS;DALLE EN BOIS
@@ -76,8 +76,8 @@ blaze_powder; , , / ,blaze_rod, / , , ;2;ALCHIMIE;POUDRE DE BLAZE
 slime_ball; , , / ,Bloc_de_Slime, / , , ;9;MATIERES_PREMIERES;BALLE DE SLIME
 magma_cream; , , /slime_ball,blaze_powder, / , , ;1;ALCHIMIE;CREME DE MAGMA
 Bloc_de_Slime;slime_ball,slime_ball,slime_ball/slime_ball,slime_ball,slime_ball/slime_ball,slime_ball,slime_ball;1;MATIERES_PREMIERES;BLOC DE SLIME
-lead;string,string, /string,slime_ball, / , ,string;2;OUTILS
-sugar_cane;MATIERES_PREMIERES;LAISSE
+lead;string,string, /string,slime_ball, / , ,string;2;OUTILS;LAISSE
+sugar_cane;MATIERES_PREMIERES;CANNE A SUCRE
 sugar; , , / ,sugar_cane, / , , ;1;NOURRITURE;SUCRE
 Papier; , , / , , /sugar_cane,sugar_cane,sugar_cane;3;MATIERES_PREMIERES;PAPIER
 book; , , /leather,Papier, /Papier,Papier, ;1;MATIERES_PREMIERES;LIVRE
@@ -144,7 +144,7 @@ gold_nugget; , , / ,gold_ingot, / , , ;9;MATIERES_PREMIERES;PEPITE OR
 gold_ingot;gold_nugget,gold_nugget,gold_nugget/gold_nugget,gold_nugget,gold_nugget/gold_nugget,gold_nugget,gold_nugget;1;MATIERES_PREMIERES;LINGOT OR
 speckled_melon;gold_nugget,gold_nugget,gold_nugget/gold_nugget,melon_slice,gold_nugget/gold_nugget,gold_nugget,gold_nugget;1;ALCHIMIE;TRANCHE DE PASTEQUE SCINTILLANTE
 golden_carrot;gold_nugget,gold_nugget,gold_nugget/gold_nugget,carrot,gold_nugget/gold_nugget,gold_nugget,gold_nugget;1;ALCHIMIE;CARROTE DOREE
-golden_boots; , , /gold_ingot, ,gold_ingot/gold_ingot, ,gold_ingot;1;ARMURES;BOTES EN OR
+golden_boots; , , /gold_ingot, ,gold_ingot/gold_ingot, ,gold_ingot;1;ARMURES;BOTTES EN OR
 golden_helmet; , , /gold_ingot,gold_ingot,gold_ingot/gold_ingot, ,gold_ingot;1;ARMURES;CASQUE EN OR
 golden_axe;gold_ingot,gold_ingot, /gold_ingot,stick, / ,stick, ;1;OUTILS;HACHE EN OR
 golden_hoe;gold_ingot,gold_ingot, / ,stick, / ,stick, ;1;OUTILS;HOUE EN OR

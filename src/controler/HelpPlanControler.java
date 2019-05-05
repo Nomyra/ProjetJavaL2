@@ -25,6 +25,10 @@ public class HelpPlanControler {
     @FXML
     private Pane row2col2;
 
+    /* ----------
+    E: Plan plan
+    // remplie la matrice avec les items du plan
+     */
     public void inithelp(Plan plan){
         Pane[][] tabPane = {{row0col0,row0col1,row0col2},{row1col0,row1col1,row1col2},{row2col0,row2col1,row2col2}};
         for (int i=0;i<plan.getPlan().length;i++){

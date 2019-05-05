@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import modele.Modele;
 import modele.Plan;
 
+//Controle les différentes vues de l'app
 public class JeuxManager {
 
     private Scene scene;
@@ -20,18 +21,21 @@ public class JeuxManager {
         this.primaryStage = primaryStage;
     }
 
+    //Chargement de la vue home
     public void showHomeView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/home.fxml"));
         scene.setRoot(loader.load());
         HomeControler controller = loader.getController();
         controller.initManager(this);
     }
+    //Chargement de l'index en mode reprendre partie
     public void showReprendreView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
         scene.setRoot(loader.load());
         MainController controller = loader.getController();
         controller.initialize(this.modele,"reprendre",this);
     }
+    //Chargement de l'index en mode créatif
     public void showCreatifView() throws IOException {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
             scene.setRoot(loader.load());
@@ -39,6 +43,7 @@ public class JeuxManager {
             modele.modeCreatif = true;
             controller.initialize(this.modele,"creatif",this);
     }
+    //Chargement de l'index en mode normal
     public void showNormalView() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/index.fxml"));
         scene.setRoot(loader.load());
@@ -46,6 +51,7 @@ public class JeuxManager {
         modele.modeCreatif = false;
         controller.initialize(this.modele,"normal",this);
     }
+    //Création d'une nouvelle fenêtre pour l'affichage de l'aide
     public void showHelpPlanView(Plan plan, String item) throws IOException {
         StackPane helpLayout = new StackPane();
         Scene secondScene = new Scene(helpLayout, 230, 100);
@@ -68,7 +74,7 @@ public class JeuxManager {
         controller.inithelp(plan);
         newWindow.show();
     }
-
+    //Enregistre l'état de l'app à la fermeture
     public void exitProcess(){
         modele.enregistrerEtat();
     }

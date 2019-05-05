@@ -27,7 +27,7 @@ public class HomeControler {
         normal.setFont(minecarftB);
         creatif.setFont(minecarftB);
 
-        //menu mode de jeux
+        /* ---------- Choix du mode de jeux --------------*/
         reprendre.setOnAction(e->{
 
             try {
@@ -69,5 +69,6 @@ public class HomeControler {
                 }
             }
         });
+        /* ------ */
     }
 }

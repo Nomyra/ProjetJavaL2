@@ -474,11 +474,9 @@ public class MainController {
             resultatPane.getChildren().remove(0);
         }
         if (res!=null){
-            ImageView iv = new ImageView("resource/images/items/"+res.nom+".png");
-            iv.setId(res.nom);
+            ImageView iv = newIV(res.nom);
             resultatPane.getChildren().add(iv);
             if(res.nbFabrique>1){
-                System.out.println(String.valueOf(res.nbFabrique));
                 nbItem.setText(String.valueOf(res.nbFabrique));
             }
         }

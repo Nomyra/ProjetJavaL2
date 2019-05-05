@@ -18,6 +18,7 @@ public class MatierePremControler extends VBox {
     @FXML
     private Label h1;
 
+    //Chargement de la vue et init
     public MatierePremControler(Modele m) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resource/fxml/matierePrem.fxml"));
         loader.setRoot(this);
@@ -32,7 +33,7 @@ public class MatierePremControler extends VBox {
 
     /*-----------
     E: Modele modele
-    //Affiche les items MATIERES_PREMIERES
+    //Affiche les items non fabricable et MATIERES_PREMIERES
     S:
      */
     public void show(Modele modele) {

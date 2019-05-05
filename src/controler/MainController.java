@@ -466,6 +466,7 @@ public class MainController {
     S:
      */
     private void crafte(Modele m) {
+        nbItem.setText(null);
         Item res = m.plans.chercher(m.planEnCours);
         m.setResultatCraft(res);
 
@@ -479,7 +480,6 @@ public class MainController {
             if(res.nbFabrique>1){
                 System.out.println(String.valueOf(res.nbFabrique));
                 nbItem.setText(String.valueOf(res.nbFabrique));
-                System.out.println(nbItem.getText());
             }
         }
     }
